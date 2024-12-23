@@ -1,0 +1,188 @@
+{
+    "1031_Paal-Knorr_Pyrrole_Synthesis": [
+        "N%C(-C[FGNOT=ACID,XWITHDRAWING,LEAVING])%C[HETS=0]%[FUSION=NO]C[HETS=0]%C(-C[FGNOT=ACID,XWITHDRAWING,LEAVING])%@1 => N^1 + C^2(=O)(-C^3[FGNOT=ACID,XWITHDRAWING,LEAVING])-C^4[HETS=0]-[FUSION=NO]C^5[HETS=0]-C^6(=O)(-C^7[FGNOT=ACID,XWITHDRAWING,LEAVING])",
+        "N-C(-C[FGNOT=ACID,XWITHDRAWING,LEAVING])=C[HETS=0]-[FUSION=NO]C[HETS=0]=C(-C[FGNOT=ACID,XWITHDRAWING,LEAVING])-@1 => N^1 +C^2(=O)(-C^3[FGNOT=ACID,XWITHDRAWING,LEAVING])-C^4[HETS=0]-[FUSION=NO]C^5[HETS=0]-C^6(=O)(-C^7[FGNOT=ACID,XWITHDRAWING,LEAVING])"
+    ],
+    "1039_Feist_Synthesis_of_Pyrroles": [
+        "N%C(-C[FGNOT=LEAVING])=C(-C[FGS=ESTER,KETONE,NITRILE,AMIDE])%C[HETS=0;FGNOT=LEAVING]=C(-C[FGNOT=ACID,LEAVING,XWITHDRAWING])%@1 =>N^1-C^2(-C^3[FGNOT=LEAVING])=C^4[HS=1]-C^5[FGS=ESTER,KETONE,NITRILE,AMIDE] +C^6[HS>0](-O[HS=1])-C^7(=O)-C^8[FGNOT=ACID,LEAVING]"
+    ],
+    "1171_Hantzsch_Thiazole_Synthesis": [
+        "S[EPS=2]%C[HETS=2]%[FUSION#DIARYL]N[HS=0]%[FUSION#DIARYL]C[HETS=1]%[FUSION#DIARYL]C[HETS=1]%@1 => S^1[EPS=2]=C^2[HETS=2]-N^3[HS=2] + C^4[HETS=1](=O)-C^5[HETS=1]-CL,BR,I",
+        "S[EPS=2]%C[HETS=2]%[FUSION#DIARYL]N[HS=0]%[FUSION#DIARYL]C[HETS=1]%[FUSION#DIARYL]C[HETS=1]%@1 => S^1[EPS=2]=C^2[HETS=2]-N^3[HS=2] + C^4[HETS=2](-O-C[HS=3])(-CL)-C^5[HETS=1]-CL",
+        "S[EPS=2]%C[HETS=2]%[FUSION#DIARYL]N[HS=0]%[FUSION#DIARYL]C[HETS=1]%[FUSION#DIARYL]C[HETS=1]%@1 => S^1[EPS=2]=C^2[HETS=2]-N^3[HS=2] + C^4[HETS=1](=O)-C^5[HETS=2](-BR)-BR"
+    ],
+    "1391_Allene_2+2_Cycloaddition": [
+        "C[FGNOT=ALCOHOL,ETHER]=C-C[FGNOT=ALCOHOL,ETHER,KETONE,OLEFIN]-C[FGNOT=ALCOHOL,ETHER,AMINE]-C[FGNOT=ALCOHOL,ETHER]-@2 =>C^1[FGNOT=ALCOHOL,ETHER]=C^2=C^3[FGNOT=ALCOHOL,ETHER] + C^4[FGNOT=ALCOHOL,ETHER,AMINE]=C^5[FGNOT=ALCOHOL,ETHER]"
+    ],
+    "1439_Pyrazoles_BetaCarbonylCarboxylicAcidCyclization":
+    [
+        "N[HETS=1;HS=0]%N[HETS=1;EPS=1]%[FUSION#DIARYL]C[HETS=1]%[FUSION#DIARYL]C%[FUSION#DIARYL]C[FGS=ALCOHOL,THIOL;HETS=2](-O,S[HS=1])%@1 => C^3(=O)-C^4-C^5(=O)-O,S^6[HS=1] + N^1[HETS=1;HS=1;EPS=1]-N^2[HETS=1;EPS=1;HS=2]",
+        "N[HETS=1;HS=0]-N[HETS=1;EPS=1]=[FUSION#DIARYL]C[HETS=1]-[FUSION#DIARYL]C=[FUSION#DIARYL]C[FGS=ETHER;HETS=2](-O[HETS=0;HS=0])-@1 => C^3(=O)-C^4-C^5(=O)-O^6[HETS=0;HS=0] + N^1[HETS=1;HS=1;EPS=1]-N^2[HETS=1;EPS=1;HS=2]",
+        "N[HETS=1;HS=0]-N[HETS=1;EPS=1]=[FUSION#DIARYL]C[HETS=1]-[FUSION#DIARYL]C=[FUSION#DIARYL]C[FGS=AMINE*1,AMINE*2,AMINE*3;HETS=2](-N)-@1 => C^3(=O)-C^4-C^5(=S)-N^6 + N^1[HETS=1;HS=1;EPS=1]-N^2[HETS=1;EPS=1;HS=2]"
+    ],
+    "2201_Arylpyridines_via_o-Aminocarbonyls": [
+        "N[HETS=0]=[FUSION=NO]C[FGNOT=NITRO,HALIDE,O*SULFONATE,ETHER,SULFIDE,AMINE*1,AMINE*2,AMINE*3]-[FUSION#DIARYL]C[FGNOT=HALIDE,O*SULFONATE]=C[HETS=0]%C%[FUSION=DIARYL]C%[FUSION=NO]@1=> C^2[FGNOT=NITRO,HALIDE,O*SULFONATE,ETHER,SULFIDE,AMINE*1,AMINE*2,AMINE*3,ESTER](=O)-C^3[HS=2;FGNOT=HALIDE,O*SULFONATE] + O=C^4[HETS=1]-C^5%C^6-N^1[HS=2]",
+        "N[HETS=0]=[FUSION=NO]C[FGS=AMINE*1]-[FUSION#DIARYL]C[FGNOT=HALIDE,O*SULFONATE]=C[HETS=0]%C%[FUSION=DIARYL]C%[FUSION=NO]@1 => C^2[FGS=NITRILE]-C^3[HS=2;FGNOT=HALIDE,O*SULFONATE] + O=C^4[HETS=1]-C^5%C^6-N^1[HS=2]",
+        "N[HETS=0]=[FUSION=NO]C[FGS=ALCOHOL]-[FUSION#DIARYL]C[FGNOT=HALIDE,O*SULFONATE]=C[HETS=0]%C%[FUSION=DIARYL]C%[FUSION=NO]@1=> C^2[FGS=ESTER](=O)-C^3[HS=2;FGNOT=HALIDE,O*SULFONATE] + O=C^4[HETS=1]-C^5%C^6-N^1[HS=2]"
+    ],
+    "2218_Tetrazoles_from_Azide_and_Nitriles": [
+        "N[HS=1;CHARGE=NO]%N[CHARGE=NO]%N[CHARGE=NO]-N[CHARGE=NO]=[FUSION#DIARYL]C[HS=0;FGNOT=HALIDE,O*SULFONATE,THIOL,ALCOHOL,AMINE*1,AMINE*2]%[FUSION#DIARYL]@1 =>N^4#C^5[HS=0;FGNOT=HALIDE,O*SULFONATE,THIOL,ALCOHOL,AMINE*1,AMINE*2] +N^1=N^2[CHARGE=CATION]=N^3[CHARGE=ANION]",
+        "N[CHARGE=NO]%N[HS=1;CHARGE=NO]%N[CHARGE=NO]-N[CHARGE=NO]=[FUSION#DIARYL]C[HS=0;FGNOT=HALIDE,O*SULFONATE,THIOL,ALCOHOL,AMINE*1,AMINE*2]%[FUSION#DIARYL]@1 =>N^4#C^5[HS=0;FGNOT=HALIDE,O*SULFONATE,THIOL,ALCOHOL,AMINE*1,AMINE*2] +N^1=N^2[CHARGE=CATION]=N^3[CHARGE=ANION]",
+        "N[CHARGE=NO]%N[CHARGE=NO]%N[HS=1;CHARGE=NO]-N[CHARGE=NO]=[FUSION#DIARYL]C[HS=0;FGNOT=HALIDE,O*SULFONATE,THIOL,ALCOHOL,AMINE*1,AMINE*2]%[FUSION#DIARYL]@1 =>N^4#C^5[HS=0;FGNOT=HALIDE,O*SULFONATE,THIOL,ALCOHOL,AMINE*1,AMINE*2] +N^1=N^2[CHARGE=CATION]=N^3[CHARGE=ANION]",
+        "N[HS=1;CHARGE=NO]%N[CHARGE=NO]%N[CHARGE=NO]-N[CHARGE=NO]=[FUSION#DIARYL]C[HS=0;FGNOT=HALIDE,O*SULFONATE,THIOL,ALCOHOL,AMINE*1,AMINE*2]%[FUSION#DIARYL]@1 =>N^4#C^5[HS=0;FGNOT=HALIDE,O*SULFONATE,THIOL,ALCOHOL,AMINE*1,AMINE*2] +N^1=N^2#N^3",
+        "N[CHARGE=NO]%N[HS=1;CHARGE=NO]%N[CHARGE=NO]-N[CHARGE=NO]=[FUSION#DIARYL]C[HS=0;FGNOT=HALIDE,O*SULFONATE,THIOL,ALCOHOL,AMINE*1,AMINE*2]%[FUSION#DIARYL]@1 =>N^4#C^5[HS=0;FGNOT=HALIDE,O*SULFONATE,THIOL,ALCOHOL,AMINE*1,AMINE*2] +N^1=N^2#N^3",
+        "N[CHARGE=NO]%N[CHARGE=NO]%N[HS=1;CHARGE=NO]-N[CHARGE=NO]=[FUSION#DIARYL]C[HS=0;FGNOT=HALIDE,O*SULFONATE,THIOL,ALCOHOL,AMINE*1,AMINE*2]%[FUSION#DIARYL]@1 =>N^4#C^5[HS=0;FGNOT=HALIDE,O*SULFONATE,THIOL,ALCOHOL,AMINE*1,AMINE*2] +N^1=N^2#N^3"
+    ],
+    "2230_Phthalazin-1-ones_from_2-Acylbenzoic_Acids": [
+        "N[HETS=1;EPS=1]-N[HETS=1;EPS=1]-C(=O)-C%C%C%C%C%C(%@5)-,%C[HETS=1]=@1 =>C^3(=O^4)(-O[HS=1])-C^5%C^6%C^7%C^8%C^9%C^10(%@4)-C^11[HETS=1](=O) +N^1[HETS=1;HS=2]-N^2[HETS=1;HS>0;EPS=1]",
+        "N[HETS=1;EPS=1]%N[HETS=1;EPS=1]%C(-O[HS=1])%C%C%C%C%C%C(%@5)%C[HETS=1]%@1 =>C^3(=O^4)(-O[HS=1])-C^5%C^6%C^7%C^8%C^9%C^10(%@4)-C^11[HETS=1](=O) +N^1[HETS=1;HS=2]-N^2[HETS=1;HS>0;EPS=1] "
+    ],
+    "2238_Fused_Aryl(23-HR)Pyridines_(Pictet-Spengler)": [
+        "N-C[HETS=1]-C[HETS=0]-[FUSION=EITHER]C%[FUSION=ALKYLARYL]C-C[HETS=1]-@1 =>N^1-C^2[HETS=1]-C^3[HETS=0]-[FUSION=EITHER]C^4%[FUSION=NO]C^5 +C^6[HETS=1]=O"
+    ],
+    "2267_Sonogashira_Coupling": [
+        "C[RINGS=NO]#C-C[ARYL=YES] => C^1[RINGS=NO]#C^2[HS=1] + Cl,Br,I-C^3[ARYL=YES]",
+        "C[RINGS=NO]#C-C=C => C^1[RINGS=NO]#C^2[HS=1] + Cl,Br,I-C^3=C"
+    ],
+    "2269_Kabbe_Synthesis_of_4-Chromanones": [
+        "O-C[HETS=1](-C[FGNOT=OLEFIN,NITRILE,TRIHALIDE])-C[HS=1,2]-C[FGS=KETONE]-C%C%C%C%C%C(-@1)%@6 =>O=C^2[HETS=1](-C^3[FGNOT=OLEFIN,NITRILE,TRIHALIDE]) +C^4[HS=1,2]-C^5[FGS=KETONE]-C^6%C^7%C^8%C^9%C^10%C^11(%@6)-O^1[HS=1]"
+    ],
+    "2630_Benzazepin-2-ones_by_Pictet-Spengler_Reaction": [
+        "N[HETS=0]-C(=O)-C[HETS=0]-C[HETS=0]-C%[FUSION=ALKYLARYL]C-[FUSION=NO]C[HS>0;HETS=1]-[FUSION=NO]@1 => N^1[HS>0;HETS=0]-C^2(=O^3)-C^4[HETS=0]-C^5[HETS=0]-C^6%C^7 + C^8[HS>0;HETS=1]=O",
+        "N=C(-O[HS=1])-C[HETS=0]-C[HETS=0]-C[HETS=0]%[FUSION=ALKYLARYL]C-[FUSION=NO]C[HS>0;HETS=1]-[FUSION=NO]@1 => N^1[HETS=0]=C^2(-O^3[HS=1])-C^4[HETS=0]-C^5[HETS=0]-C^6[HETS=0]%C^7 + C^8[HS>0;HETS=1]=O"
+    ],
+    "2684_Benzo[b]furans_from_2-Hydroxyphenyl_Acetylenes": [
+        "C%O%C%[FUSION=NO]C%C%X%X%C(%[FUSION=NO]@3)%[FUSION=NO]C[HS=0](%[FUSION=NO]@1)-C[FGS=KETONE]=O =>O^2-C^3%[FUSION=NO]C^4%C^5%C,N^6%C,N^7%C^8(%[FUSION=NO]@2)-C^9#C^1 +C^10[HS=0;HETS=2](=O^11)-CL"
+    ],
+    "2875_Copper[I]-catalyzed_azide-alkyne_cycloaddition": [
+        "N(-C,Si,S)%N%N%C[HS=0]%C[HS=1]%@1 => N^1(-C,Si,S^2)=N^3[CHARGE=CATION]=N^4[CHARGE=ANION] + C^5[HS=0]#C^6[HS=1]"
+    ],
+    "6003_Buchwald-Hartwig_Ether_Formation": [
+        "C[HETS=1]-O-C%C%C%C%C%C%@3 => C^1[HETS=1]-O^2[HS=1] + BR-C^3%C^4%C^5%C^6%C^7%C^8%@4"
+    ],
+    "6004_Suzuki-Miyaura_Cross-Coupling_(Bromo)": [
+        "C[ARYL=YES]-C[ARYL=YES] => C^1[ARYL=YES]-Br + C^2[ARYL=YES]-B(-O[HS=1])-O[HS=1]"
+    ],
+    "6005_Suzuki-Miyaura_Cross-Coupling_(Iodo)": [
+        "C[ARYL=YES]-C[ARYL=YES] => C^1[ARYL=YES]-I + C^2[ARYL=YES]-B(-O[HS=1])-O[HS=1]"
+    ],
+    "6006_Suzuki-Miyaura_Cross-Coupling_(Chloro)": [
+        "C[ARYL=YES]-C[ARYL=YES] => C^1[ARYL=YES]-CL + C^2[ARYL=YES]-B(-O[HS=1])-O[HS=1]"
+    ],
+    "6008_Suzuki-Miyaura_Cross-Coupling_with_Alkene": [
+        "C[ARYL=YES]-C=C[HETS=0]-C => C^1[ARYL=YES]-B(-O[HS=1])-O[HS=1] + BR-C^2=C^3[HETS=0]-C^4"
+    ],
+    "6009_Suzuki-Miyaura_Cross-Coupling_of_Alkenes": [
+        "C-C[HETS=0]=C-C[HETS=0]-C[HETS=0;HS>0] => C^1-C^2[HETS=0]=C^3-BR + C^4[HETS=0]=C^5[HETS=0]"
+    ],
+    "6013_Hiyama_Aryl-Alkenyl_Cross-Coupling": [
+        "C[ARYL=YES]-C[HETS=0]=C[HETS=0] => C^1[ARYL=YES]-I + C^2[HETS=1](=C^3)-SI(-C[HS=3])(-C[HS=3])-C[HS=3]"
+    ],
+    "6014_Hiyama_Non-Aromatic_Cross-Coupling": [
+        "C=C-C[HETS=0]=C[HETS=0] => C^1=C^2-SI(-C[HS=3])(-C[HS=3])-C[HS=3] + C^3[HETS=1](=C^4[HETS=0])-I,BR",
+        "C#C-C[HETS=0]=C[HETS=0] => C^1#C^2-SI(-C[HS=3])(-C[HS=3])-C[HS=3] + C^3[HETS=1](=C^4[HETS=0])-I,BR"
+    ],
+    "6015_Hiyama_Allyl_Cross-Coupling": [
+        "\n        C=C-C[HETS=0]-C[HETS=0]-C=C => C^1=C^2-C^3-SI(-C[HS=3])(-C[HS=3])-C[HS=3] + BR-C^4-C^5[HETS=0]=C^6[HETS=0]"
+    ],
+    "6016_Hiyama_Carbonylative_Cross-Coupling": [
+        "\n    C[ARYL=YES]-C(=O)-C[ARYL=YES] =>C^1[ARYL=YES]-Br,I + C^2[CHARGE=ANION]#O^3[CHARGE=CATION] + C^4[ARYL=YES]-SI(-O-C[HS=2]-C[HS=3])(-O-C[HS=2]-C[HS=3])-O-C[HS=2]-C[HS=3]",
+        "\n    C[ARYL=YES]-C(=O)-C[ARYL=YES] =>C^1[ARYL=YES]-Br,I + C^2[HS=0;EPS=1]=O^3 + C^4[ARYL=YES]-SI(-O-C[HS=2]-C[HS=3])(-O-C[HS=2]-C[HS=3])-O-C[HS=2]-C[HS=3]"
+    ],
+    "6017_Hiyama_Cross-Coupling_with_Arylhydrazine": [
+        "C[ARYL=YES]-C[ARYL=YES] => C^1[ARYL=YES]-N[HS=1]-N[HS=2] + C^2[ARYL=YES]-SI(-O-C[HS=2]-C[HS=3])(-O-C[HS=2]-C[HS=3])-O-C[HS=2]-C[HS=3]"
+    ],
+    "6022_Liebeskind-Srogl_Thioamide_Coupling": [
+        "N[RINGS=YES]=C[RINGS=YES]-C[ARYL=YES] => N^1[RINGS=YES;HS=1]-C^2[RINGS=YES]=S + C^3[ARYL=YES]-B(-O[HS=1])-O[HS=1]"
+    ],
+    "6024_Liebeskind-Srogl_Nitrile_Formation": [
+        "N#C-C => N^1#C^2-S-C[PHENYL=YES] + C^3-B(-O[HS=1])-O[HS=1]"
+    ],
+    "6025_Liebeskind-Srogl_Heterocyclic_Coupling": [
+        "C[HETS=1,2;RINGS=YES]-C[HETS=0] => C^1[HETS=2,3;RINGS=YES]-S-C[HS=3] + C^2[HETS=1]-B(-O[HS=1])-O[HS=1]",
+        "C[HETS=1,2;RINGS=YES]-C[HETS=0] => C^1[HETS=2,3;RINGS=YES]-S-C[HS=3] +C^2[HETS=1]-SN(-C[T*BUTYL=YES])(-C[T*BUTYL=YES])-C[T*BUTYL=YES]"
+    ],
+    "6026_Sulfonamide_Schotten-Baumann": [
+        "S[HS=0](=O)(=O)(-C[ARYL=YES])-N => S^1[HS=0](=O^2)(=O^3)(-C^4[ARYL=YES])-Cl + N^5[HS=1,2]"
+    ],
+    "6027_Sulfonamide_Schotten-Baumann_from_Sulfonate": [
+        "N-S(=O)(=O)-C => N^1[HS>0] + O[HS=1]-S^2(=O^3)(=O^4)-C^5"
+    ],
+    "6028_Sulfonamide_Schotten-Baumann_from_Thiol": [
+        "N-S(=O)(=O)-C => N^1[HS>0] + S^2[HS=1;HETS=0]-C^5"
+    ],
+    "6029_Sulfonamide_Schotten-Baumann_from_Aryl_Bromide": [
+        "N-S(=O)(=O)-C[ARYL=YES] => N^1[HS>0] + C^5[ARYL=YES]-BR"
+    ],
+    "6031_Mitsunobu_Reaction": [
+        "O=C-O,S-C[HETS=1]-C => O^1=C^2-O,S^3[HS=1] + C^4[HETS=1](-C^5)-O[HS=1]"
+    ],
+    "6032_Mitsunobu_carbon-carbon_bond_formation": [
+        "C[HETS=0;ARYL=NO]-C[HS=1](-C[FGS=ESTER,NITRILE])-C[FGS=ESTER,NITRILE]=> C^1[HETS=1;ARYL=NO]-O[HS=1] + C^2[HS=2](-C^3[FGS=ESTER,NITRILE])-C^4[FGS=ESTER,NITRILE]"
+    ],
+    "6033_Mitsunobu_SN2'_Reaction": [
+        "C-C(=O)-O-C[HS=2]-C(=C[HS=1]-C)-C(=O)-O-C => C^1-C^2(=O^3)(-O^4[HS=1]) + C^5[HS=2]=C^6(-C^7[HS=1](-C^8)-O[HS=1])-C^9(=O^10)-O^11-C^12"
+    ],
+    "6034_Mitsunobu_Imide_Reaction": [
+        "N(-C-C)(-C[FGS=AMIDE*3])-C[FGS=AMIDE*3] => N^1[HS=1](-C^4[FGS=AMIDE*2])-C^5[FGS=AMIDE*2] + O[HS=1]-C^2[FGNOT=ACID]-C^3",
+        "N(-C-C)(%C)%C => N^1[HS=1](%C^4)%C^5 + O[HS=1]-C^2[FGNOT=ACID]-C^3"
+    ],
+    "6035_Mitsunobu_Aryl_Ether_Formation": [
+        "O(-C[ARYL=YES])-C[ARYL=NO] => O^1[HS=1]-C^3[ARYL=NO;FGNOT=ACID] + C^2[ARYL=YES]-O[HS=1]"
+    ],
+    "6036_Mitsunobu_Sulfonamide_Reaction": [
+        "C[HS=1,2;HETS=1]-N(-C)-S(=O)(=O)-C => C^1[HS=1,2;HETS=1]-O[HS=1] + N^2[HS=1](-C^3)-S^4(=O^5)(=O^6)-C^7"
+    ],
+    "6038_Ester_or_Amide_or_Thiolester_Formation": [
+        "C[HETS=1]-O,N,S[HETS=0]-C[HETS=2]=O => C^1[HETS=1]-O,N,S^2[HS>0;HETS=0] + O[HS=1]-C^3[HETS=2]=O^4"
+    ],
+    "6039_Williamson_Ether_Synthesis": [
+        "O(-C[HETS=1])-C[HETS=1] => O^1[HS=1](-C^2[HETS=1]) + C^3[HETS=1]-Cl,Br,I"
+    ],
+    "6041_Buchwald-Hartwig_Reaction_-_Amines": [
+        "C[ARYL=YES]-N[FGNOT=IMINE]-,%C[HETS=1] => C^1[ARYL=YES]-BR,CL,I + N^2[HS>0]-,%C^3[HETS=1]"
+    ],
+    "6043_Buchwald-Hartwig_Reaction_-_Sulfonamides": [
+        "C[ARYL=YES]-N-S(=O)(=O)-C[HETS=1] => C^1[ARYL=YES]-BR + N^2[HS>0]-S^3(=O^4)(=O^5)-C^6[HETS=1]"
+    ],
+    "7005_Benzimidazoles_from_o-Phenylenediamines": [
+        "N[HETS=0]%C[HETS=2]%N[HETS=0]%C%C,N%C,N%C,N%C,N%C(%@1)%[FUSION=DIARYL]@4 =>N^1[HETS=0;HS=2]-C^9%C,N^8%C,N^7%C,N^6%C,N^5%C^4(-N^3[HETS=0;HS=2])%@2 +C^2[FGS=ACID;HETS=2](=O)-O[HS=1]"
+    ],
+    "7009_Acylsulfonamide_from_Sulfonamide_and_Carboxylic_Acid": [
+        "S(=O)(=O)-N[HS=1]-C[HETS=2]=O => S^1(=O^2)(=O^3)-N^4[HS=2] + C^5(=O^6)-O[HS=1]"
+    ],
+    "7013_Benzimidazoles_from_o-Phenylenediamines_and_Aldehydes_-_Iodine": [
+        "N[HETS=0;HS=0]-C[HETS=2]=N[HS=0;HETS=0]%C%C%C%C%C%C(%@1)%[FUSION=DIARYL]@4 =>N^1[HETS=0;HS=1]-C^9%C^8%C^7%C^6%C^5%C^4(-N^3[HETS=0;HS=2])%@2 +C^2[FGS=ALDEHYDE;HETS=1]=O",
+        "N[HETS=0;HS=1]-C[HETS=2]=N[HS=0;HETS=0]%C%C%C%C%C%C(%@1)%[FUSION=DIARYL]@4 =>N^1[HETS=0;HS=2]-C^9%C^8%C^7%C^6%C^5%C^4(-N^3[HETS=0;HS=2])%@2 +C^2[FGS=ALDEHYDE;HETS=1]=O"
+    ],
+    "7014_Benzimidazoles_from_o-Phenylenediamines_and_Aldehydes_-_Boronic_Acid": [
+        "N[HETS=0;HS=1]-C[HETS=2]=N[HS=0;HETS=0]%C%C%C%C%C%C(%@1)%[FUSION=DIARYL]@4 =>N^1[HETS=0;HS=2]-C^9%C^8%C^7%C^6%C^5%C^4(-N^3[HETS=0;HS=2])%@2 +C^2[FGS=ALDEHYDE;HETS=1]=O"
+    ],
+    "7015_Sulfonamide_from_sulfonic_acid_and_amine": [
+        "N[HETS<2]-S(=O)(=O)-C => N^1[HETS<2;HS>0] + O[HS=1]-S^2(=O^3)(=O^4)-C^5"
+    ],
+    "7017_Sulfonamide_alkylation_with_a_cyclic_ether": [
+        "S(=O)(=O)(-C[HETS=1])-N[RINGS=YES](-C[HETS=1;ARYL=NO;RINGS=YES])-C[HETS=1;ARYL=NO;RINGS=YES] =>S^1(=O^2)(=O^3)(-C^4[HETS=1])-N^5[HS=2] + C^6[HETS=1;ARYL=NO;RINGS=YES]-O[RINGS=YES;RINGS=YES]-C^7[HETS=1;ARYL=NO;RINGS=YES]"
+    ],
+    "7018_Sulfonamide_acylation": [
+        "S(=O)(=O)(-C)-N-C[HETS=2](=O)-C =>S^1(=O^2)(=O^3)(-C^4)-N^5[HS>0] + C^6(=O^7)(-C^8)-CL"
+    ],
+    "7019_Wittig_Reaction": [
+        "C[FGNOT=NITRO]=C[HETS=0] => C^1[HS>0;FGNOT=NITRO]-BR + C^2[HETS=1]=O",
+        "C[FGNOT=NITRO]=C[HETS=0] => C^1[HS>0;FGNOT=NITRO]-CL + C^2[HETS=1]=O",
+        "C[FGNOT=NITRO]=C[HETS=0] => C^1[HS>0;FGNOT=NITRO]-I + C^2[HETS=1]=O",
+        "C[FGNOT=NITRO]=C[HETS=0] =>C^1[HS>0;FGNOT=NITRO]-O-S(=O)(=O)-C[HETS=1] + C^2[HETS=1]=O",
+        "C[FGNOT=NITRO]=C[HETS=0]-O,S,N[HETS=0] =>C^1[HS>0;FGNOT=NITRO]-BR + C^2[HETS=2](-O,S,N^3[HETS=0])=O",
+        "C[FGNOT=NITRO]=C[HETS=0]-O,S,N[HETS=0] =>C^1[HS>0;FGNOT=NITRO]-I + C^2[HETS=2](-O,S,N^3[HETS=0])=O"
+    ],
+    "7020_Wittig_via_Methoxy-Ylide": [
+        "O=C-C[HS>0] => C^2[HS>0](-O^1-C)-BR + C^3[HETS=1](=O)"
+    ],
+    "7021_Horner-Wadsworth-Emmons_Olefination": [
+        "C[FGNOT=ALDEHYDE,KETONE,NITRILE,CHLORIDE,BROMIDE,IODIDE]-C[HS=1]=C[HS=1]-C[FGS=ESTER,NITRILE] =>C^1[FGNOT=ALDEHYDE,KETONE,NITRILE,CHLORIDE,BROMIDE,IODIDE]-C^2[HS=1]=O+ BR-C^3[HS=2]-C^4[FGS=ESTER,NITRILE]"
+    ],
+    "7022_Chan-Lam_coupling": [
+        "C[ARYL=YES]-N,O,S-C => C^1[ARYL=YES]-B(-O[HS=1])-O[HS=1] + N,O,S^2[HS>0]-C^3",
+        "C[ARYL=YES]-N,O,S-C => C^1[FGS=OLEFIN]-B(-O[HS=1])-O[HS=1] + N,O,S^2[HS>0]-C^3"
+    ]
+}

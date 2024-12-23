@@ -1,0 +1,11 @@
+rdkit
+pandas
+pandarallel
+numpy
+pathlib
+json
+subprocess
+tqdm
+argparse
+re
+logging

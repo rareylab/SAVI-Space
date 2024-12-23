@@ -1,0 +1,501 @@
+{
+    "1031": {
+        "name": "Paal-Knorr_Pyrrole_Synthesis",
+        "kill": {
+            "0": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#6;$([#6](=O)-[Cl,Br,I]),$([#6](=O)-[#8]-C=O),$([#6]-N=[#6]=O),$([#6]-[#7;!1;H2;!$([#7]-[#6]=[#7,#8])])]"], "note": "KILL IF OFFPATH THERE IS AN ACID*HALIDE OR: ANHYDRIDE OR: ISOCYANATE OR: AMINE*1"},
+            "1": {"OFFPATH": true, "atom_idx": [1], "smarts": ["[1*]~[A$([*]=,#,:[*])]"], "note": "IF THERE IS NOT HYDROGEN ON ATOM*1\n BEGIN ALPHA_1_CHK\n SAVE AS 1 THE ATOM ALPHA TO ATOM*1 OFFPATH\n KILL IF SAVED*ATOM 1 IS NOT AROMATIC AND:IF SAVED*ATOM 1 IS MULTIPLY BONDED"},
+            "2": {"OFFPATH": true, "atom_idx": [4], "smarts": ["[4*]~[*;$([#6](-[#8]-[#6])-[#8]-[#6]),$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]),$([#6]-[#7]-[#6]=O),$(C1-N-C1),$([#6]-O-[#6](=O)-N),$([#6]-N-[#6](=O)-O-[#6]),$([#6;H1](-[S;D2])-[S;D2]),$([#6](-[#6])(-[#6])(-[S;D2])-[S;D2]),$([#6]1-S-[#6]1),$([#6]1-O-[#6]1),$([#6]-[#8]-[#6]=O),$([#6;$([#6]-[#8]-[#6]);!$([#6](-[#8])-[#8]-[#6]);!$([#6](=O)-[#8]-[#6]);!$([#6]-[#8]-[#6]=O)]),$([#6](-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6]-[F,Cl,Br,I]),$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]),$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]),$([#6]-O-[#6](=O)-O-[#6]),$([#6]-O-P),$([#6]-[Se]-[#6]),$([#6]-[#16]-[#6]),$([#6]-S(=O)(=O)-[#6]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-O-[S$(S-[#6]),$([S;H1])](=O)(=O)),$([#6]-S-C#N),$([#6]-[S;H1]),$([#6]-O-[Si](-[#6])(-[#6])-[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note": "KILL IF LEAVING GROUP ALPHA TO ATOM*4 OFFPATH"},
+            "3": {"OFFPATH": true, "atom_idx": [5], "smarts": ["[5*]~[*;$([#6](-[#8]-[#6])-[#8]-[#6]),$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]),$([#6]-[#7]-[#6]=O),$(C1-N-C1),$([#6]-O-[#6](=O)-N),$([#6]-N-[#6](=O)-O-[#6]),$([#6;H1](-[S;D2])-[S;D2]),$([#6](-[#6])(-[#6])(-[S;D2])-[S;D2]),$([#6]1-S-[#6]1),$([#6]1-O-[#6]1),$([#6]-[#8]-[#6]=O),$([#6;$([#6]-[#8]-[#6]);!$([#6](-[#8])-[#8]-[#6]);!$([#6](=O)-[#8]-[#6]);!$([#6]-[#8]-[#6]=O)]),$([#6](-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6]-[F,Cl,Br,I]),$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]),$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]),$([#6]-O-[#6](=O)-O-[#6]),$([#6]-O-P),$([#6]-[Se]-[#6]),$([#6]-[#16]-[#6]),$([#6]-S(=O)(=O)-[#6]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-O-[S$(S-[#6]),$([S;H1])](=O)(=O)),$([#6]-S-C#N),$([#6]-[S;H1]),$([#6]-O-[Si](-[#6])(-[#6])-[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note": "KILL IF LEAVING GROUP ALPHA TO ATOM*5 OFFPATH"},
+            "4": {"OFFPATH": true, "atom_idx": [4], "smarts": ["[4*]:[*]"], "note": "KILL IF AROMATIC BOND ON ATOM*4 OFFPATH"},
+            "5": {"OFFPATH": true, "atom_idx": [5], "smarts": ["[5*]:[*]"], "note": "KILL IF AROMATIC BOND ON ATOM*5 OFFPATH"}
+        }
+    },
+    "1039": {
+        "name": "Feist_Synthesis_of_Pyrroles",
+        "kill": {
+            "0": {"OFFPATH": true, "atom_idx": [1], "smarts": ["[1*]~[#6;A;$([*]:,=,#[*])]"], "note":"", "line":"IF CARBON ON ALPHA TO ATOM*1 OFFPATH THEN SAVE IT AS 1  & \nAND*THEN TURN ON BIT 1 \nIF BIT 1 IS ON \nBEGIN BLOCK1 \nKILL IF NOT ARYL ON SAVED*ATOM 1 AND:IF SAVED*ATOM 1 IS MULTIPLY BONDED \nBLKEND BLOCK1"},
+            "1": {"OFFPATH": true, "atom_idx": [6], "smarts": ["[6*;$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]~[*]"], "note": "KILL IF WITHDRAWING BOND ON ATOM*6 OFFPATH"},
+            "2": {"OFFPATH": true, "atom_idx": [6], "smarts": ["[6*]~[*;$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]"], "note": "KILL IF WITHDRAWING BOND ON ATOM*6 OFFPATH"},
+            "3": {"OFFPATH": true, "atom_idx": [6], "smarts": ["[6*](~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])])~[*]"], "note": "KILL IF WITHDRAWING BOND ON ATOM*6 OFFPATH"},
+            "4": {"OFFPATH": true, "atom_idx": [6], "smarts": ["[6*]~[*]~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note": "KILL IF WITHDRAWING BOND ON ATOM*6 OFFPATH"},
+            "5":{"OFFPATH": true, "atom_idx": [6], "smarts": ["[6*]~[*$([*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]),$(*~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])])]"], "note":"KILL IF WITHDRAWING BOND ON ATOM*6 OFFPATH"},
+            "6": {"OFFPATH": true, "atom_idx": [8], "smarts": ["[8*;$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]~[*]"], "note": "KILL IF WITHDRAWING BOND ON ATOM*8 OFFPATH"},
+            "7": {"OFFPATH": true, "atom_idx": [8], "smarts": ["[8*]~[*;$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]"], "note": "KILL IF WITHDRAWING BOND ON ATOM*8 OFFPATH"},
+            "8": {"OFFPATH": true, "atom_idx": [8], "smarts": ["[8*](~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])])~[*]"], "note": "KILL IF WITHDRAWING BOND ON ATOM*8 OFFPATH"},
+            "9": {"OFFPATH": true, "atom_idx": [8], "smarts": ["[8*]~[*]~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note": "KILL IF WITHDRAWING BOND ON ATOM*8 OFFPATH"},
+            "10":{"OFFPATH": true, "atom_idx": [8], "smarts": ["[8*]~[*$([*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]),$(*~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])])]"], "note":"KILL IF WITHDRAWING BOND ON ATOM*8 OFFPATH"},
+            "11":{"OFFPATH": true, "atom_idx": [6], "smarts": ["[6*]:[*]"], "note":"KILL IF AROMATIC BOND ON ATOM*6 OFFPATH"},
+            "12":{"OFFPATH": false, "atom_idx": [6,7], "smarts": "[6*;!R0;!r6]@[*7;!R0;!r6]", "note":"IF BOND*6 IS A FUSION BOND \nBEGIN BLOCK2 \nKILL IF BOND*6 IS NOT IN A RING OF SIZE 6 \nBLKEND BLOCK2"}
+        }
+    },
+    "1171": {
+        "name": "Hantzsch_Thiazole_Synthesis",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": [4,5], "smarts": "[4*;r3,r4,r5]@[5*;r3,r4,r5]", "note":"KILL IF BOND*4 IS A SMALL*FUSION BOND; r only math the smales ring, so the second ring could be bigger"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[I,Br,Cl,F]~[*]~[#6]=[#8]", "note":"FOR EACH HALOGEN ATOM ANYWHERE DO XCCOCHK \nKILL IF THERE IS A KETONE BETA TO SPECIFIED*ATOM 1"},
+            "2": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#16;!$([1*])]=[#6]~[#7;!H0;!H1]", "note":"FOR EACH SULFUR ATOM ANYWHERE DO SCNCHK \nSAVE AS 1 SPECIFIED*ATOM 1 \nFOR EACH CARBON ATOM ALPHA TO SAVED*ATOM 1 DO NCHK2 \nSAVE AS 2 SPECIFIED*ATOM 1 \nFOR EACH NITROGEN ATOM ALPHA TO SAVED*ATOM 2 DO NCHK1 \nKILL IF THERE ARE TWO HYDROGENS ON SPECIFIED*ATOM 1 AND:IF  & \nTHE BOND SPANNING SAVED*ATOM 1 AND SAVED*ATOM 2  & \nIS A DOUBLE*BOND"},
+            "3": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#16;!H0;!$([1*])]~[#6]=[#7;!H0]", "note":"FOR EACH SULFUR ATOM ANYWHERE DO SCNCHK \nSAVE AS 1 SPECIFIED*ATOM 1 \nFOR EACH CARBON ATOM ALPHA TO SAVED*ATOM 1 DO NCHK2 \nSAVE AS 2 SPECIFIED*ATOM 1 \nFOR EACH NITROGEN ATOM ALPHA TO SAVED*ATOM 2 DO NCHK1 \nKILL IF THERE IS A HYDROGEN ON SAVED*ATOM 1 AND:IF  & \nTHERE IS A HYDROGEN ON SPECIFIED*ATOM 1 AND:IF  & \nTHE BOND SPANNING SAVED*ATOM 2 AND SPECIFIED*ATOM 1  & \nIS A DOUBLE*BOND"},
+            "4": {"OFFPATH": false, "atom_idx": [4,5], "smarts": "[4*;!H0].[5*;!H0;!H1]", "goto": 27, "note":"(GO TO BLOCK1); IF HYDROGEN ON ATOM*4 AND:IF HYDROGEN ON ATOM*5 THEN GO  & \nTO BLOCK1"},
+            "5": {"OFFPATH": true, "atom_idx": [4,5], "smarts": ["[4*;!H0]", "[5*]~[#6]"], "goto": 24, "note":"(GO TO BLOCK2); IF HYDROGEN ON ATOM*4 AND:IF CARBON ON ALPHA TO ATOM*5  & \nOFFPATH THEN GO TO BLOCK2"},
+            "6": {"OFFPATH": true, "atom_idx": [4,2], "smarts": ["[4*]~[#6]", "[2*;!H0]"], "goto": 19, "note":"(GO TO BLOCK3); IF CARBON ON ALPHA TO ATOM*4 OFFPATH AND:IF HYDROGEN ON  & \nATOM*2 THEN GO TO BLOCK3"},
+            "7": {"OFFPATH": true, "atom_idx": [4,5], "smarts": ["[4*]~[#6]", "[5*;!H0;!H1]"], "goto": 13, "note":"(GO TO BLOCK4); IF CARBON ON ALPHA TO ATOM*4 AND:IF HYDROGEN ON ATOM*5 THEN  & \nGO TO BLOCK4"},
+            "8": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]"], "note":"SAVE AS 1 ALPHA TO ATOM*2 OFFPATH \nKILL IF WITHDRAWING GROUP ON SAVED*ATOM 1"},
+            "9": {"OFFPATH": true, "atom_idx": [4], "smarts": ["[4*]~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]"], "note":"SAVE AS 2 ALPHA TO ATOM*4 OFFPATH \nKILL IF WITHDRAWING GROUP ON SAVED*ATOM 2"},
+            "10": {"OFFPATH": true, "atom_idx": [5,2], "smarts": ["[5*]~[#6]=[#8]", "[2*;a]"], "note":"SAVE AS 1 ALPHA TO ATOM*2 OFFPATH \nSAVE AS 3 ALPHA TO ATOM*5 OFFPATH \nIF KETONE ON SAVED*ATOM 3 THEN KILL IF ARYL ON SAVED*ATOM 1"},
+            "11": {"OFFPATH": true, "atom_idx": [5,4], "smarts": ["[5*]~[#6]=[#8]", "[4*;a]"], "note":"SAVE AS 2 ALPHA TO ATOM*4 OFFPATH \nSAVE AS 3 ALPHA TO ATOM*5 OFFPATH \nIF KETONE ON SAVED*ATOM 3 THEN KILL IF ARYL ON SAVED*ATOM 2"},
+            "12": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*]", "goto": 30, "note":"GO TO BLOCK5"},
+            "13": {"OFFPATH": true, "atom_idx": [4], "smarts": ["[4*]~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]"], "note":"SAVE AS 2 ALPHA TO ATOM*4 OFFPATH \nKILL IF WITHDRAWING GROUP ON SAVED*ATOM 2"},
+            "14": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]"], "note":"SAVE AS 1 ALPHA TO ATOM*2 OFFPATH \nKILL IF WITHDRAWING GROUP ON SAVED*ATOM 1"},
+            "15": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[*;$([*]~[!#6;!#1]);$([*]~[!#8])]"], "note":"SAVE AS 1 ALPHA TO ATOM*2 OFFPATH \nIF HETERO ATOM ALPHA TO SAVED*ATOM 1  & \nAND:IF NOT OXYGEN ON ALPHA TO SAVED*ATOM 1 THEN KILL"},
+            "16": {"OFFPATH": true, "atom_idx": [4], "smarts": ["[4*]~[*](~[!#6;!#1])~[!#6;!#1]"], "note":"SAVE AS 2 ALPHA TO ATOM*4 OFFPATH \nIF HETERO ATOM ALPHA TO SAVED*ATOM 2 \nBEGIN BLK_A4CHK \nIF MORE THAN ONE HETERO ATOM ALPHA TO SAVED*ATOM 2 THEN KILL"},
+            "17": {"OFFPATH": true, "atom_idx": [4], "smarts": ["[4*]~[*]~[Cl,Br,I]"], "note":"SAVE AS 2 ALPHA TO ATOM*4 OFFPATH \nIF CHLORINE ON ALPHA TO SAVED*ATOM 2 THEN TURN ON KILL_CL \nIF BROMINE ON ALPHA TO SAVED*ATOM 2 THEN  & \nTURN ON KILL_BR AND*THEN TURN ON KILL_CL \nIF IODINE ON ALPHA TO SAVED*ATOM 2 THEN  & \nTURN ON KILL_I AND*THEN TURN ON KILL_BR AND*THEN  & \nTURN ON KILL_CL"},
+            "18": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*]", "goto": 30, "note":"GO TO BLOCK5"},
+            "19": {"OFFPATH": false, "atom_idx": [5], "smarts": "[5*;!H0;!H1]", "goto": 23, "note":"IF HYDROGEN ON ATOM*5 THEN GO TO BLOCK6"},
+            "20": {"OFFPATH": true, "atom_idx": [4], "smarts": ["[4*]~[*;$([#6](=O)-[O;H1]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]#N)]"], "note":"SAVE AS 2 ALPHA TO ATOM*4 OFFPATH \nKILL IF ACID ON SAVED*ATOM 2 OR:IF KETONE ON SAVED*ATOM 2  & \nOR:IF NITRILE ON SAVED*ATOM 2"},
+            "21": {"OFFPATH": true, "atom_idx": [5], "smarts": ["[5*]~[*;$([*]~[!#6;!#1]);!$([*]~[#8])]"], "note":"SAVE AS 3 ALPHA TO ATOM*5 OFFPATH \nIF HETERO ATOM ALPHA TO SAVED*ATOM 3 OFFPATH  & \nAND:IF NOT OXYGEN ON ALPHA TO SAVED*ATOM 3 THEN KILL"},
+            "22": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*]", "goto": 30, "note":"GO TO BLOCK5"},
+            "23": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*]", "goto": 30, "note":"GO TO BLOCK5"},
+            "24": {"OFFPATH": true, "atom_idx": [5], "smarts": ["[5*]~[*;!$([#6](=O)-,:[#8]-,:[#6]);$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]"], "note":"SAVE AS 3 ALPHA TO ATOM*5 OFFPATH \nIF WITHDRAWING GROUP ON SAVED*ATOM 3 AND:IF NOT ESTER  & \nON SAVED*ATOM 3 THEN KILL"},
+            "25": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[#6;!$([#6](=O)-,:[#8]-,:[#6]);$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]"], "note":"IF CARBON ON ALPHA TO ATOM*2 OFFPATH \nBEGIN BLK_C_ON_A2 \nSAVE AS 1 THE ATOM ALPHA TO ATOM*2 OFFPATH \nIF WITHDRAWING GROUP ON SAVED*ATOM 1 AND:IF NOT ESTER  & \nON SAVED*ATOM 1 THEN KILL"},
+            "26": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*]", "goto": 30, "note":"GO TO BLOCK5"},
+            "27": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*;2;!H0]", "goto": 30, "note":"GO TO BLOCK5"},
+            "28": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]"], "note":"SAVE AS 1 ALPHA TO ATOM*2 OFFPATH \nKILL IF WITHDRAWING GROUP ON SAVED*ATOM 1"},
+            "29": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[!#6;!#1]"], "note":"SAVE AS 1 ALPHA TO ATOM*2 OFFPATH \nKILL IF HETERO ATOM ALPHA TO SAVED*ATOM 1"},
+            "30": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#42]", "note":"placeholder for GO TO"}
+        }
+    },
+    "1391": {
+        "name": "Allene_2+2_Cycloaddition",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": [2,3], "smarts": "[2*;!R0;!R1;r3,r4,r5]@[3*;!R0;!R1;r3,r4,r5]", "note":"KILL IF BOND*2 IS A SMALL*FUSION BOND, r only math the smallest ring, so the second ring could be bigger"},
+            "1": {"OFFPATH": false, "atom_idx": [2,3], "smarts": "[2*;r7]@[3*;r7]", "note":"KILL IF BOND*2 IS IN A RING OF SIZE 7; ring at atom2 and ring at atom3 dont have to be the same?, and there might be a smaller ring?"},
+            "2": {"OFFPATH": false, "atom_idx": [3,4], "smarts": "[2*;!R0;!R1]@[4*;!R0;!R1]", "note":"KILL IF BOND*3 IS A FUSION BOND; atom 3 and atom 4 are in different reactants; ring at atom3 and ring at atom4 dont have to be the same?"},
+            "3": {"OFFPATH": false, "atom_idx": [4,5], "smarts": "[4*]~1~[5*]~[*]~[*]~1", "note":"KILL IF ALPHA TO ATOM*4 OFFPATH IS THE SAME AS WITHIN  & \nBETA TO ATOM*5 OFFPATHactually OFFPATH"},
+            "4": {"OFFPATH": false, "atom_idx": [4], "smarts": "[4*;$([#6](=[#6])=[#6])]", "note":"KILL IF OLEFIN ON ATOM*4; one doublebond change to singlebond in product"},
+            "5": {"OFFPATH": false, "atom_idx": [1,3,4,5], "smarts": "[*;1;!H0;!H1].[*;3;!H0;!H1].[*;4]~[*;!H0].[*;5;!H0;!H1]", "note":"IF THERE ARE TWO HYDROGENS ON ATOM*1 AND:IF THERE ARE TWO   & \nHYDROGENS ON ATOM*3 THEN TURN ON BIT 1 \nIF BIT 1 IS ON \nBEGIN ALLENE_ON \nFOR EACH CARBON ALPHA TO ATOM*4 OFFPATH DO H_CHK \nKILL IF TWO HYDROGENS ON ATOM*5 AND:IF HYDROGEN  & \nON SPECIFIED*ATOM 1 \nKILL IF THERE IS AN OLEFIN ON SPECIFIED*ATOM 1"},
+            "6": {"OFFPATH": false, "atom_idx": [1,3,4], "smarts": "[*;1;!H0;!H1].[*;3;!H0;!H1].[*;4]~[*;$(C=C)]", "note":"IF THERE ARE TWO HYDROGENS ON ATOM*1 AND:IF THERE ARE TWO   & \nHYDROGENS ON ATOM*3 THEN TURN ON BIT 1 \nIF BIT 1 IS ON \nBEGIN ALLENE_ON \nFOR EACH CARBON ALPHA TO ATOM*4 OFFPATH DO H_CHK \nKILL IF TWO HYDROGENS ON ATOM*5 AND:IF HYDROGEN  & \nON SPECIFIED*ATOM 1 \nKILL IF THERE IS AN OLEFIN ON SPECIFIED*ATOM 1"},
+            "7": {"OFFPATH": false, "atom_idx": [1,3], "smarts": "[*;1;!H2].[*;3;!H2].[1*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6]);$([*]~[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])])]", "note":"BEGIN ALLENE_OFF\n KILL IF THERE IS NOT A DONATING BOND ON ATOM*1"},
+            "8": {"OFFPATH": false, "atom_idx": [1,3], "smarts": "[*;1;!H2].[*;3;!H2].[3*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6]);$([*]~[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])])]", "note":"BEGIN ALLENE_OFF\n  KILL IF THERE IS NOT A DONATING BOND ON ATOM*3"},
+            "9": {"OFFPATH": false, "atom_idx": [], "smarts": "[#42]", "note":"KILL IF ATOM*1 IS LESS*HINDERED THAN ATOM*3"}
+        }
+    },
+    "1439":{
+        "name": "Pyrazoles_BetaCarbonylCarboxylicAcidCyclization",
+        "kill": {
+            "0": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[*]"], "note":"KILL IF THERE IS AN ATOM ON ALPHA TO ATOM*2 OFFPATH"},
+            "1": {"OFFPATH": true, "atom_idx": [4], "smarts": ["[4*]~[*;!H0;$([*]~[#6;$([#6](=O)-[O;H1]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-[#6])(=O)-[#6])])]"], "note":"IF THERE IS A HYDROGEN ON SAVED*ATOM 2 THEN KILL IF ALPHA TO IT HAS AN ACID OR: CARBONYL GROUP"},
+            "2": {"OFFPATH": true, "atom_idx": [4,3], "smarts": ["[4*]~[*;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-[#6])(=O)-[#6])]","[3*;!H0;!H1]"], "note":"IF THERE IS A CARBONYL GROUP ON SAVED*ATOM 2 /nKILL IF THERE IS A HYDROGEN ON ATOM*3"},
+            "3": {"OFFPATH": true, "atom_idx": [4,3], "smarts": ["[4*]~[*;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-[#6])(=O)-[#6])]","[3*]~[*;R]"], "note":"IF THERE IS A CARBONYL GROUP ON SAVED*ATOM 2 /nKILL IF SAVED*ATOM 1 IS IN A RING"},
+            "4": {"OFFPATH": true, "atom_idx": [4,4], "smarts": ["[4*]~[*;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-[#6])(=O)-[#6])]","[4*&D0,4*$(*~[*;!$([#6])])]"], "note":"IF THERE IS A CARBONYL GROUP ON SAVED*ATOM 2 /nKILL IF THERE IS NO CARBON ON ALPHA TO SAVED*ATOM 2 OFFPATH"},
+            "5": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#42]", "note":"Not translated: KILL IF THE APPENDAGES FROM ATOM*3 TOWARDS SAVED*ATOM 1 AND FROM SAVED*ATOM 2 TOWARDS SAVED*ATOM 4 ARE NOT IDENTICAL"}
+        }
+    },
+    "2201": {
+        "name": "Arylpyridines_via_o-Aminocarbonyls",
+        "kill": {
+            "0": {"OFFPATH": true, "atom_idx": [4], "smarts": ["[4*]~[*;$([#6](=O)-[O;H1]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-[Cl,Br,I]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([#6]#N)]"], "note":"KILL IF ALPHA TO ATOM*4 OFFPATH THERE IS A CARBOXYL OR: NITRILE"},
+            "1": {"OFFPATH": true, "atom_idx": [1], "smarts": ["[1*]~[#6]"], "note":"KILL IF ALPHA TO ATOM*1 OFFPATH IS A CARBON ATOM"},
+            "2": {"OFFPATH": true, "atom_idx": [3], "smarts": ["[3*]~[*](~[#6])(~[#6])~[#6]"], "note":"KILL IF THERE IS A QUATERNARY*CENTRE ALPHA TO ATOM*3 OFFPATH"},
+            "3": {"OFFPATH": true, "atom_idx": [3,2], "smarts": ["[3*]~[*;$([#6](=O)-[O;H1]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-[Cl,Br,I]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](=O)-,:[#8]-,:C=O)]","[*2]~[#8]"], "goto": 6, "note":"IF THERE IS A CARBOXYL ALPHA TO ATOM*3 OFFPATH AND:IF THE  & \nATOM ALPHA TO ATOM*2 OFFPATH IS AN OXYGEN THEN GO TO  & \nBLOCK8(GO TO BLOCK8)goto command"},
+            "4": {"OFFPATH": true, "atom_idx": [2,3], "smarts": ["[2*]~[#7,#8]", "[3*;!$([*;$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]);!$([*]~[*;$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6]),$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]);!$([*]~[*]~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])])]"], "note":"KILL IF ALPHA TO ATOM*2 OFFPATH IS A NITROGEN OR: OXYGEN  & \nAND:IF THERE IS NOT A WITHDRAWING BOND ON ATOM*3 OFFPATH"},
+            "5": {"OFFPATH": true, "atom_idx": [2,3], "smarts": ["[2*]~[#7,#8]", "[3*]~[*;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6])]"], "note":"KILL IF ALPHA TO ATOM*2 OFFPATH IS A NITROGEN OR: OXYGEN  & \nAND:IF THERE IS A CARBONYL ALPHA TO ATOM*3 OFFPATH"},
+            "6": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#42]", "note":"placeholder for GO TO; there is some PERMUTE stuff going on ..."}
+        }
+    },
+    "2218": {
+        "name": "Tetrazoles_from_Azide_and_Nitriles",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6][Cl,Br,I]", "note":"KILL IF THERE IS A CHLORIDE OR: BROMIDE OR: IODIDE ANYWHERE"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*;$([#6]-O-[S$(S-[#6]),$([S;H1])](=O)(=O)),$([#6]1-O-[#6]1),$([#6]1-S-[#6]1),$([#6]-O-P)]", "note":"KILL IF THERE IS A O*SULFONATE OR: EPOXIDE OR:  & \nEPISULFIDE OR: PHOSPHONATE ANYWHERE"},
+            "2": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6;!R0](=O)-,:[#8]-,:[#6]", "note":"IF THERE IS AN ESTER ANYWHERE THEN KILL IF THE PREVIOUS LOCANT  & \nIS IN A RING"},
+            "3": {"OFFPATH": true, "atom_idx": [5], "smarts": ["[*5]~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note":"KILL IF THERE IS AN EXPANDABLE*WITHDRAWING GROUP ALPHA  & \nFROM ATOM*5 OFFPATH"}
+        }
+    },
+    "2230": {
+        "name": "Phthalazin-1-ones_from_2-Acylbenzoic_Acids",
+        "kill": {
+            "0": {"OFFPATH": true, "atom_idx": [11], "smarts": ["[11*]~[#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I]"], "note":"KILL IF THERE IS A TRIHALIDE ALPHA TO ATOM*11 OFFPATH"},
+            "1": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[*]!-;!:[#7]"], "note":"IF BETA TO ATOM*2 OFFPATH IS A NITROGEN THEN  & \nSAVE IT AS 1 \nKILL IF THE BOND SPANNING ALPHA TO ATOM*2 OFFPATH  & \nAND SAVED*ATOM 1 IS A MULTIPLE BOND AND:IF THERE  & \nIS NOT AN AROMATIC BOND SPANNING ALPHA  & \nTO ATOM*2 OFFPATH AND SAVED*ATOM 1"},
+            "2": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[#6;$([*]=[#6])]"], "note":"KILL IF THERE IS AN OLEFIN ALPHA TO ATOM*2 OFFPATH"},
+            "3": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[*]~[F,Cl,Br,I]"], "note":"KILL IF THERE IS A HALOGEN*ATOM BETA TO ATOM*2 OFFPATH"},
+            "4": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[#6](=O)-[O;H1]"], "note":"KILL IF THERE IS AN ACID ALPHA TO ATOM*2 OFFPATH"},
+            "5": {"OFFPATH": true, "atom_idx": [1], "smarts": ["[#8](~[!#6])~[#6;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6])]"], "note":""},
+            "6": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[#8](~[!#6])~[#6;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6])]"], "note":""},
+            "7": {"OFFPATH": true, "atom_idx": [3], "smarts": ["[#8](~[!#6])~[#6;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6])]"], "note":""},
+            "8": {"OFFPATH": true, "atom_idx": [4], "smarts": ["[#8](~[!#6])~[#6;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6])]"], "note":""},
+            "9": {"OFFPATH": true, "atom_idx": [5], "smarts": ["[#8](~[!#6])~[#6;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6])]"], "note":""},
+            "10": {"OFFPATH": true, "atom_idx": [6], "smarts": ["[#8](~[!#6])~[#6;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6])]~[*!6]"], "note":""},
+            "11": {"OFFPATH": true, "atom_idx": [7], "smarts": ["[#8](~[!#6])~[#6;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6])]"], "note":""},
+            "12": {"OFFPATH": true, "atom_idx": [8], "smarts": ["[#8](~[!#6])~[#6;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6])]"], "note":""},
+            "13": {"OFFPATH": true, "atom_idx": [9], "smarts": ["[#8](~[!#6])~[#6;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6])]"], "note":""},
+            "14": {"OFFPATH": true, "atom_idx": [10], "smarts": ["[#8](~[!#6])~[#6;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6])]"], "note":""},
+            "15": {"OFFPATH": true, "atom_idx": [11], "smarts": ["[#8](~[!#6])~[#6;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6])]"], "note":""},
+            "16": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#7;!H0;!H1]~[#7]"], "note":"FOR EACH NITROGEN ATOM OFFPATH DO HYDRAZ \nIF THERE ARE TWO HYDROGENS ON SPECIFIED*ATOM 1 AND:IF  & \nTHERE IS A NITROGEN ATOM ALPHA TO SPECIFIED*ATOM 1 THEN KILL"},
+            "17": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#42]", "note":"there are 2 kill statments left; confusion keyword permute => Changes the formal bond order of a specified bond in an aromatic ring from single to double or vice versa?"}
+        }
+    },
+    "2238": {
+        "name": "Fused_Aryl(23-HR)Pyridines_(Pictet-Spengler)",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*;1,2,3,4,5,6;$([#6](-[#8]-[#6])-[#8]-[#6]),$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]),$([#6]-[#7]-[#6]=O),$([#6]-[#7;H2;!$([#7]-[#6]=[#7,#8])]),$([#6]-[#7;H1;!$([#7]-[#6]=[#7,#8])]-[#6]),$([#6]-[#7;!$([#7]-[#6]=[#7,#8])](-[#6])-[#6]),$([#6]-[#8]-[#6]=O),$([#6;$([#6]-[#8]-[#6]);!$([#6](-[#8])-[#8]-[#6]);!$([#6](=O)-[#8]-[#6]);!$([#6]-[#8]-[#6]=O)]),$([#6]-[#7]-[F,Cl,Br,I]),$([#6;H1](-[#8]-[#6])-[O;H1]),$([#6]-[#7]-[O;H1]),$([#6]-N-[#6](=O)-O-[#6]),$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]),$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]),$([#6]-O-[#6](=O)-N),$([#6]-O-[#6](=O)-O-[#6]),$([#6]-P(-[#6])-[#6]),$([#6]-[Se]-[#6]),$([#6]-[#16]-[#6]),$([#6]-[S;H1]),$([#6]-O-[Si](-[#6])(-[#6])-[#6])]", "goto": 6, "note":"Added Goto statements because in the product all the backbone atoms are in the same ring as atoms 4 and 5"},
+            "1": {"OFFPATH": false, "atom_idx": [5], "smarts": "[5*;r3]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]", "note":"size 3; FOR EACH ATOM IN THE CURRENT*RING DO EDBCHK \nIF THERE IS A DONATING BOND ON THE SPECIFIED*ATOM 1 THEN TURN ON BIT 1 \nEDBCHK  ENDDO \nKILL IF BIT 1 IS OFF"},
+            "2": {"OFFPATH": false, "atom_idx": [5], "smarts": "[5*;r4]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]", "note":"size 4; FOR EACH ATOM IN THE CURRENT*RING DO EDBCHK \nIF THERE IS A DONATING BOND ON THE SPECIFIED*ATOM 1 THEN TURN ON BIT 1 \nEDBCHK  ENDDO \nKILL IF BIT 1 IS OFF"},
+            "3": {"OFFPATH": false, "atom_idx": [5], "smarts": "[5*;r5]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]", "note":"size 5; FOR EACH ATOM IN THE CURRENT*RING DO EDBCHK \nIF THERE IS A DONATING BOND ON THE SPECIFIED*ATOM 1 THEN TURN ON BIT 1 \nEDBCHK  ENDDO \nKILL IF BIT 1 IS OFF"},
+            "4": {"OFFPATH": false, "atom_idx": [5], "smarts": "[5*;r6]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]", "note":"size 6; FOR EACH ATOM IN THE CURRENT*RING DO EDBCHK \nIF THERE IS A DONATING BOND ON THE SPECIFIED*ATOM 1 THEN TURN ON BIT 1 \nEDBCHK  ENDDO \nKILL IF BIT 1 IS OFF"},
+            "5": {"OFFPATH": false, "atom_idx": [5], "smarts": "[5*;r7]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]:[*;!$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]);!$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]);!$([#6]-,:[#7]-,:[#6]=O);!$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]);!$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]);!$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O);!$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]);!$([#6]-,:[#7]-[F,Cl,Br,I]);!$([#6;H1](-,:[#8]-,:[#6])-,:[O;H1]);!$([#6]-,:[#7]-[O;H1]);!$([#6]-N-[#6](=O)-O-[#6]);!$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]);!$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]);!$([#6]-O-[#6](=O)-N);!$([#6]-O-[#6](=O)-O-[#6]);!$([#6]-P(-[#6])-[#6]);!$([#6]-[Se]-[#6]);!$([#6]-,:[#16]-,:[#6]);!$([#6]-[S;H1]);!$([#6]-O-[Si](-[#6])(-[#6])-[#6])]", "note":"size 7; FOR EACH ATOM IN THE CURRENT*RING DO EDBCHK \nIF THERE IS A DONATING BOND ON THE SPECIFIED*ATOM 1 THEN TURN ON BIT 1 \nEDBCHK  ENDDO \nKILL IF BIT 1 IS OFF"},
+            "6": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#42]", "note":"placeholder for GO TO"},
+            "7": {"OFFPATH": true, "atom_idx": [1], "smarts": ["[1*]~[F,Cl,Br,I]"], "note":"KILL IF ALPHA TO ATOM*1 OFFPATH IS A HALOGEN*ATOM"},
+            "8": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#42]", "note":"there are 1 kill statment left (LESS*HINDERED)"}
+        }
+    },
+    "2267": {
+        "name": "Sonogashira_Coupling",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*;$([#6](=O)-[Cl,Br,I]),$([#6](=O)-,:[#8]-,:C=O),$([#6]1-O-[#6]1),$([#6]-N=[#6]=O)]", "note":"KILL IF ANYWHERE THERE IS AN ACID*HALIDE OR: ANHYDRIDE OR: EPOXIDE OR: ISOCYANATE"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[I;D1]", "note":"FOR EACH IODINE ATOM ANYWHERE DO I_CHK \nIF THERE IS ONLY ONE ATOM ALPHA TO SPECIFIED*ATOM 1 THEN KILL"}
+        }
+    },
+    "2269": {
+        "name": "Kabbe_Synthesis_of_4-Chromanones",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[2*]~[*;$(C=C);$([#6]#N);$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]", "note":"KILL IF ALPHA TO ATOM*2 HAS AN OLEFIN OR: NITRILE OR: TRIHALIDE"},
+            "1": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[*]~[*;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]);$([#6](-,:[#6])(=O)-,:[#6])]"], "note":"KILL IF BETA TO ATOM*2 OFFPATH HAS AN ALDEHYDE OR: KETONE"},
+            "2": {"OFFPATH": true, "atom_idx": [3], "smarts": ["[3*]~[*;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]);$([#6](-,:[#6])(=O)-,:[#6])]"], "note":"KILL IF ALPHA TO ATOM*3 OFFPATH HAS AN ALDEHYDE OR: KETONE"},
+            "3": {"OFFPATH": true, "atom_idx": [3], "smarts": ["[3*;!H0;!H1]~[*;$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)])]"], "note":"additional allow 1H because of the broken bond for OFFPATH; KILL IF THERE IS A HYDROGEN ON ATOM*3 AND:IF & \nTHERE IS AN ALCOHOL ALPHA ON ATOM*3 OFFPATH"},
+            "4": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*;$([*]~[*;!H0]);$([*]~[*]~[*;$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)])])]"], "note":"KILL IF THERE IS A HYDROGEN ON ALPHA TO ATOM*2 OFFPATH  & \nAND:IF THERE IS AN ALCOHOL ON BETA TO ATOM*2 OFFPATH"},
+            "5": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[2*;!H0].[*3]~[#6](=O)-[O;H1]", "note":"IF THERE IS A HYDROGEN ON ATOM*2 \nKILL IF THERE IS AN ACID ON ATOM*3"},
+            "6": {"OFFPATH": true, "atom_idx": [2,4], "smarts": ["[2*;!H0]","[*4]~[a]"], "note":"IF THERE IS A HYDROGEN ON ATOM*2 \nKILL IF THERE IS AN AROMATIC ATOM ALPHA ON ATOM*4 OFFPATH"}
+        }
+    },
+    "2630": {
+        "name": "Benzazepin-2-ones_by_Pictet-Spengler_Reaction",
+        "kill": {}
+    },
+    "2684": {
+        "name": "Benzo[b]furans_from_2-Hydroxyphenyl_Acetylenes",
+        "kill": {}
+    },
+    "2875": {
+        "name": "Copper[I]-catalyzed_azide-alkyne_cycloaddition",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[1*]@[2*]", "note":"KILL IF BOND*1 IS A RING BOND"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*;$([#6;!5;!6]#[#6;!5;!6]),$([#7;!1]=[#7;+;!3]=[#7;-;!4])]", "note":"KILL IF ANYWHERE THERE IS AN ACETYLENE OR: AZIDE"},
+            "2": {"OFFPATH": true, "atom_idx": [5], "smarts": ["[*;5]~[!#6;!#1;!H0]"], "note":"IF ALPHA TO ATOM*5 OFFPATH IS A HETERO THEN KILL IF IT HAS A HYDROGEN"},
+            "3": {"OFFPATH": false, "atom_idx": [2], "smarts": "[C;2]#[*]", "note":"IF ATOM*2 IS CARBON AND: NON AROMATIC \nKILL IF ATOM*2 HAS A TRIPLE*BOND"},
+            "4": {"OFFPATH": false, "atom_idx": [2], "smarts": "[C;2]=[!#6;!#1]", "note":"IF ATOM*2 IS CARBON AND: NON AROMATIC \nIF ATOM*2 HAS A DOUBLE*BOND THEN KILL IF IT IS A BOND TO A HETERO"},
+            "5": {"OFFPATH": false, "atom_idx": [2], "smarts": "[Si;2;!$(*(~[#6])(~[#6])~[#6])]", "note":"IF ATOM*2 IS SILICON \nKILL IF THERE ARE NOT THREE CARBON ATOMS ALPHA TO ATOM*2"},
+            "6": {"OFFPATH": false, "atom_idx": [2], "smarts": "[S;2;!H0]", "note":"IF ATOM*2 IS SULFUR \nKILL IF THERE IS A HYDROGEN ON ATOM*2"},
+            "7": {"OFFPATH": false, "atom_idx": [2], "smarts": "[S;2;!$([*](=[*])=[*])]", "note":"IF ATOM*2 IS SULFUR \nKILL IF THERE ARE NOT TWO DOUBLE*BONDS ON ATOM*2"},
+            "8": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#42]", "note":"there is a Kill statement left: KILL IF THERE IS A CARBON ON THE PREVIOUS BOND LOCANT"}
+        }
+    },
+    "6003": {
+        "name": "Buchwald-Hartwig_Ether_Formation",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6]-I", "note":"KILL IF THERE IS AN IODIDE ANYWHERE"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6]-Br", "note":"KILL IF THERE IS A BROMIDE ANYWHERE"},
+            "2": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6;!1;$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)])]", "note":"KILL IF THERE IS AN ALCOHOL ANYWHERE"},
+            "3": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#7;$([#7;H2;!$([#7]-,:[#6]=[#7,#8])]-,:[#6]),$([#7;H1;!$([#7]-,:[#6]=[#7,#8])](-,:[#6])-,:[#6])]", "note":"KILL IF THERE ANYWHERE THERE IS AN AMINE*1 OR AMINE*2"}
+        }
+    },
+    "6004": {
+        "name": "Suzuki-Miyaura_Cross-Coupling_(Bromo)",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[I]", "note":"KILL IF THERE IS AN IODIDE ANYWHERE"}
+        }
+    },
+    "6005": {
+        "name": "Suzuki-Miyaura_Cross-Coupling_(Iodo)",
+        "kill": {}
+    },
+    "6006": {
+        "name": "Suzuki-Miyaura_Cross-Coupling_(Chloro)",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[I,Br]", "note":"KILL IF THERE IS AN IODIDE ANYWHERE, KILL IF THERE IS A BROMIDE ANYWHERE"}
+        }
+    },
+    "6008": {
+        "name": "Suzuki-Miyaura_Cross-Coupling_with_Alkene",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[I]", "note":"KILL IF THERE IS AN IODIDE ANYWHERE"}
+        }
+    },
+    "6009": {
+        "name": "Suzuki-Miyaura_Cross-Coupling_of_Alkenes",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[I]", "note":"KILL IF THERE IS AN IODIDE ANYWHERE"}
+        }
+    },
+    "6013": {
+        "name": "Hiyama_Aryl-Alkenyl_Cross-Coupling",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[I;D1]", "note":"FOR EACH IODINE ATOM ANYWHERE DO I_CHK \nIF THERE IS ONLY ONE ATOM ALPHA TO SPECIFIED*ATOM 1 THEN KILL"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[Si]=,:,#[#6]", "note":"FOR EACH SILICON ATOM ANYWHERE DO SI_CHK IF THERE IS A CARBON ATOM ALPHA TO SPECIFIED*ATOM 1 AND:IF & IT IS MULTIPLY BONDED THEN KILL"}
+        }
+    },
+    "6014": {
+        "name": "Hiyama_Non-Aromatic_Cross-Coupling",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[I,Br;D1]", "note":"FOR EACH IODINE ATOM ANYWHERE DO I_CHK \nIF THERE IS ONLY ONE ATOM ALPHA TO SPECIFIED*ATOM 1 THEN KILL, FOR EACH BROMINE ATOM ANYWHERE DO BR_CHK \nIF THERE IS ONLY ONE ATOM ALPHA TO SPECIFIED*ATOM 1 THEN KILL"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[Si]~[#6]", "note":"FOR EACH SILICON ATOM ANYWHERE DO SI_CHK \nIF THERE IS A CARBON ATOM ALPHA TO SPECIFIED*ATOM 1 THEN KILL"}
+        }
+    },
+    "6015": {
+        "name": "Hiyama_Allyl_Cross-Coupling",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[I,Br;D1]", "note":"FOR EACH IODINE ATOM ANYWHERE DO I_CHK \nIF THERE IS ONLY ONE ATOM ALPHA TO SPECIFIED*ATOM 1 THEN KILL, FOR EACH BROMINE ATOM ANYWHERE DO BR_CHK \nIF THERE IS ONLY ONE ATOM ALPHA TO SPECIFIED*ATOM 1 THEN KILL"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[Si]~[#6]", "note":"FOR EACH SILICON ATOM ANYWHERE DO SI_CHK \nIF THERE IS A CARBON ATOM ALPHA TO SPECIFIED*ATOM 1 THEN KILL"}
+        }
+    },
+    "6016": {
+        "name": "Hiyama_Carbonylative_Cross-Coupling",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[I]", "note":"KILL IF THERE IS AN IODIDE ANYWHERE"}
+        }
+    },
+    "6017": {
+        "name": "Hiyama_Cross-Coupling_with_Arylhydrazine",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[Si]:,=,#[#6]", "note":"FOR EACH SILICON ATOM ANYWHERE DO SI_CHK \nIF THERE IS A CARBON ATOM ALPHA TO SPECIFIED*ATOM 1 AND:IF  & \nIT IS MULTIPLY BONDED THEN KILL"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "a~[#7;!H0]~[#7;!H0;!H1]", "note":"FOR EACH NITROGEN ATOM ANYWHERE DO NN_CHK \nSAVE AS 1 SPECIFIED*ATOM 1 \nFOR EACH NITROGEN ATOM ALPHA TO SAVED*ATOM 1 DO NN2_CHK \nSAVE AS 2 SPECIFIED*ATOM 1 \nIF THERE IS A HYDROGEN ON SAVED*ATOM 1 AND:IF  & \nTHERE ARE TWO HYDROGENS ON SAVED*ATOM 2 \nBEGIN BLK_N2CHK \nIF THERE IS AN AROMATIC ATOM ALPHA TO SAVED*ATOM 1 THEN KILL"}
+        }
+    },
+    "6022": {
+        "name": "Liebeskind-Srogl_Thioamide_Coupling",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[1*]!@[2*]", "note":"IF ATOM*1 AND ATOM*2 ARE NOT IN A COMMON RING THEN KILL"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[1*]!@[*]!@[2*]", "note":"IF ATOM*1 AND ATOM*2 ARE NOT IN A COMMON RING THEN KILL"},
+            "2": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[1*]!@[*]!@[*]!@[2*]", "note":"IF ATOM*1 AND ATOM*2 ARE NOT IN A COMMON RING THEN KILL"},
+            "3": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[1*]!@[*]!@[*]!@[*]!@[2*]", "note":"IF ATOM*1 AND ATOM*2 ARE NOT IN A COMMON RING THEN KILL"},
+            "4": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[1*]!@[*]!@[*]!@[*]!@[*]!@[2*]", "note":"IF ATOM*1 AND ATOM*2 ARE NOT IN A COMMON RING THEN KILL"}
+        }
+    },
+    "6024": {
+        "name": "Liebeskind-Srogl_Nitrile_Formation",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[3*;A;!$([*]=[*])]", "note":"IF ATOM*3 IS NOT AROMATIC AND:IF THERE IS NOT A DOUBLE*BOND ON ATOM*3 THEN KILL"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "S-C#N", "note":"IF THERE IS A THIOCYANATE ANYWHERE THEN KILL"}
+        }
+    },
+    "6025": {
+        "name": "Liebeskind-Srogl_Heterocyclic_Coupling",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[2*;A;!$([*]=[*])]", "note":"IF ATOM*2 IS NOT AROMATIC AND:IF THERE IS NOT A DOUBLE*BOND ON ATOM*2 THEN KILL"}
+        }
+    },
+    "6026": {
+        "name": "Sulfonamide_Schotten-Baumann",
+        "kill": {}
+    },
+    "6027": {
+        "name": "Sulfonamide_Schotten-Baumann_from_Sulfonate",
+        "kill": {}
+    },
+    "6028": {
+        "name": "Sulfonamide_Schotten-Baumann_from_Thiol",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6;$([#6]-[S;!2;D1]),$([#6]-,:[#16;!2;D2]-,:[#6]),$([#6]-[S;D2]-[S;D2]-[#6])]", "note":"KILL IF THERE ANYWHERE THERE IS A THIOL OR: SULFIDE OR: DISULFIDE"}
+        }
+    },
+    "6029": {
+        "name": "Sulfonamide_Schotten-Baumann_from_Aryl_Bromide",
+        "kill": {}
+    },
+    "6031": {
+        "name": "Mitsunobu_Reaction",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6;$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)])]", "note":"KILL IF THERE IS AN ALCOHOL ANYWHERE"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6;!2](=[O;!1])-[O;H1]", "note":"KILL IF THERE IS AN ACID ANYWHERE"},
+            "2": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#16;D1]~[#6](~[#6])=[#8]", "note":"FOR EACH SULFUR ATOM ANYWHERE DO THIOCHK \nSAVE AS 1 SPECIFIED*ATOM 1 \nIF THERE IS ONLY ONE ATOM ALPHA TO SAVED*ATOM 1 AND:IF  & \nTHERE IS A CARBON ATOM ALPHA TO SAVED*ATOM 1 \nBEGIN BLK_THIOCHK \nIF THERE IS ONE CARBON ATOM ALPHA TO SAVED*ATOM 2 AND:IF  & \nTHERE IS ONE OXYGEN ATOM ALPHA TO SAVED*ATOM 2 \nSAVE AS 3 THE PREVIOUS LOCANT \nIF THERE IS A DOUBLE*BOND SPANNING SAVED*ATOM 2 AND SAVED*ATOM 3 THEN KILL"},
+            "3": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[5*;$([*;$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]~[*])]=[*]", "note":"KILL IF THERE IS A DOUBLE*BOND ON ATOM*5 AND:IF  & \nTHERE IS A WITHDRAWING BOND ON ATOM*5"},
+            "4": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[5*;$([*]~[*;$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])])]=[*]", "note":"KILL IF THERE IS A DOUBLE*BOND ON ATOM*5 AND:IF  & \nTHERE IS A WITHDRAWING BOND ON ATOM*5"},
+            "5": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[5*;$([*](~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])])~[*])]=[*]", "note":"KILL IF THERE IS A DOUBLE*BOND ON ATOM*5 AND:IF  & \nTHERE IS A WITHDRAWING BOND ON ATOM*5"},
+            "6": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[5*;$([*]~[*]~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])])]=[*]", "note":"KILL IF THERE IS A DOUBLE*BOND ON ATOM*5 AND:IF  & \nTHERE IS A WITHDRAWING BOND ON ATOM*5"},
+            "7": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[4*]~[#6;$(*=*);$([*;$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]~[*])]", "note":"FOR EACH CARBON ATOM ALPHA TO ATOM*4 OFFPATH DO DB_CHK \nKILL IF THERE IS A DOUBLE*BOND ON SPECIFIED*ATOM 1 AND:IF  & \nTHERE IS A WITHDRAWING BOND ON SPECIFIED*ATOM 1"},
+            "8": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[4*]~[#6;$(*=*);$([*]~[*;$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])])]", "note":"FOR EACH CARBON ATOM ALPHA TO ATOM*4 OFFPATH DO DB_CHK \nKILL IF THERE IS A DOUBLE*BOND ON SPECIFIED*ATOM 1 AND:IF  & \nTHERE IS A WITHDRAWING BOND ON SPECIFIED*ATOM 1"},
+            "9": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[4*]~[#6;$(*=*);$([*](~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])])~[*])]", "note":"FOR EACH CARBON ATOM ALPHA TO ATOM*4 OFFPATH DO DB_CHK \nKILL IF THERE IS A DOUBLE*BOND ON SPECIFIED*ATOM 1 AND:IF  & \nTHERE IS A WITHDRAWING BOND ON SPECIFIED*ATOM 1"},
+            "10": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[4*]~[#6;$(*=*);$([*]~[*]~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])])]", "note":"FOR EACH CARBON ATOM ALPHA TO ATOM*4 OFFPATH DO DB_CHK \nKILL IF THERE IS A DOUBLE*BOND ON SPECIFIED*ATOM 1 AND:IF  & \nTHERE IS A WITHDRAWING BOND ON SPECIFIED*ATOM 1"}
+        }
+    },
+    "6032": {
+        "name": "Mitsunobu_carbon-carbon_bond_formation",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6;$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]),$([#6](=O)-[O;H1])]", "note":"KILL IF THERE IS AN ALCOHOL ANYWHERE \nKILL IF THERE IS AN ACID ANYWHERE"},
+            "1": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[*;!H0;R0,R1;!$(*=,#,:*)](~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])])~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note":"FOR EACH ENOLIZABLE ATOM OFFPATH DO ACT_CHK \nKILL IF THERE IS MORE THAN ONE EXPANDABLE*WITHDRAWING GROUP ALPHA TO SPECIFIED*ATOM 1"},
+            "2": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#16;D1]~[#6](~[#6])=[#8]", "note":"FOR EACH SULFUR ATOM ANYWHERE DO THIOCHK \nSAVE AS 1 SPECIFIED*ATOM 1 \nIF THERE IS ONLY ONE ATOM ALPHA TO SAVED*ATOM 1 AND:IF  & \nTHERE IS A CARBON ATOM ALPHA TO SAVED*ATOM 1 \nBEGIN BLK_THIOCHK \nSAVE AS 2 THE PREVIOUS LOCANT \nIF THERE IS ONE CARBON ATOM ALPHA TO SAVED*ATOM 2 AND:IF  & \nTHERE IS ONE OXYGEN ATOM ALPHA TO SAVED*ATOM 2 \nBEGIN BLK_COCHK \nSAVE AS 3 THE PREVIOUS LOCANT \nIF THERE IS A DOUBLE*BOND SPANNING SAVED*ATOM 2 AND SAVED*ATOM 3 THEN KILL"}
+        }
+    },
+    "6033": {
+        "name": "Mitsunobu_SN2'_Reaction",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6;$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]),$([#6;!2](=[O;!3])-[O;!4;H1])]", "note":"KILL IF THERE IS AN ALCOHOL ANYWHERE, KILL IF THERE IS AN ACID ANYWHERE"},
+            "1": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[*;!H0;R0,R1;!$(*=,#,:*)](~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])])~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note":"FOR EACH ENOLIZABLE ATOM OFFPATH DO ACT_CHK \nKILL IF THERE IS MORE THAN ONE EXPANDABLE*WITHDRAWING GROUP ALPHA TO SPECIFIED*ATOM 1"},
+            "2": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#16;D1]~[#6](~[#6])=[#8]", "note":"FOR EACH SULFUR ATOM ANYWHERE DO THIOCHK \nSAVE AS 1 SPECIFIED*ATOM 1 \nIF THERE IS ONLY ONE ATOM ALPHA TO SAVED*ATOM 1 AND:IF  & \nTHERE IS A CARBON ATOM ALPHA TO SAVED*ATOM 1 \nBEGIN BLK_THIOCHK \nIF THERE IS ONE CARBON ATOM ALPHA TO SAVED*ATOM 2 AND:IF  & \nTHERE IS ONE OXYGEN ATOM ALPHA TO SAVED*ATOM 2 \nSAVE AS 3 THE PREVIOUS LOCANT \nIF THERE IS A DOUBLE*BOND SPANNING SAVED*ATOM 2 AND SAVED*ATOM 3 THEN KILL"},
+            "3": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#42]", "note":"TODO: KILL IF ATOM*8 IS NOT*SYN TO BOND*5"}
+        }
+    },
+    "6034": {
+        "name": "Mitsunobu_Imide_Reaction",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6;!4;!5;$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]),$([#6](=O)-[O;H1])]", "note":"KILL IF THERE IS AN ALCOHOL ANYWHERE, KILL IF THERE IS AN ACID ANYWHERE"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*;!H0;R0,R1;$(C(=O)C)](~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])])~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]", "note":"FOR EACH ENOLIZABLE ATOM ANYWHERE DO ACT_CHK \nKILL IF THERE IS MORE THAN ONE EXPANDABLE*WITHDRAWING GROUP ALPHA TO SPECIFIED*ATOM 1"},
+            "2": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[a4]!@[a5]", "note":"IF ATOM*4 IS AROMATIC AND:IF ATOM*5 IS AROMATIC \nIF ATOM*4 AND ATOM*5 ARE NOT IN A COMMON RING THEN KILL"},
+            "3": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#16;D1]~[#6](~[#6])=[#8]", "note":"FOR EACH SULFUR ATOM ANYWHERE DO THIOCHK \nSAVE AS 1 SPECIFIED*ATOM 1 \nIF THERE IS ONLY ONE ATOM ALPHA TO SAVED*ATOM 1 AND:IF  & \nTHERE IS A CARBON ATOM ALPHA TO SAVED*ATOM 1 \nBEGIN BLK_THIOCHK \nIF THERE IS ONE CARBON ATOM ALPHA TO SAVED*ATOM 2 AND:IF  & \nTHERE IS ONE OXYGEN ATOM ALPHA TO SAVED*ATOM 2 \nSAVE AS 3 THE PREVIOUS LOCANT \nIF THERE IS A DOUBLE*BOND SPANNING SAVED*ATOM 2 AND SAVED*ATOM 3 THEN KILL"}
+        }
+    },
+    "6035": {
+        "name": "Mitsunobu_Aryl_Ether_Formation",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6;$([#6;$([#6]-[O;!1;D1]);!$([#6](~O)-O)]),$([#6](=O)-[O;D1])]", "note":"KILL IF THERE IS AN ALCOHOL ANYWHERE, KILL IF THERE IS AN ACID ANYWHERE"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*;!H0;R0,R1;!$(*=,#,:*)](~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])])~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]", "note":"FOR EACH ENOLIZABLE ATOM DO ACT_CHK \nKILL IF THERE IS MORE THAN ONE EXPANDABLE*WITHDRAWING GROUP ALPHA TO SPECIFIED*ATOM 1"},
+            "2": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#16;D1]~[#6](~[#6])=[#8]", "note":"FOR EACH SULFUR ATOM ANYWHERE DO THIOCHK \nSAVE AS 1 SPECIFIED*ATOM 1 \nIF THERE IS ONLY ONE ATOM ALPHA TO SAVED*ATOM 1 AND:IF  & \nTHERE IS A CARBON ATOM ALPHA TO SAVED*ATOM 1 \nBEGIN BLK_THIOCHK \nIF THERE IS ONE CARBON ATOM ALPHA TO SAVED*ATOM 2 AND:IF  & \nTHERE IS ONE OXYGEN ATOM ALPHA TO SAVED*ATOM 2 \nSAVE AS 3 THE PREVIOUS LOCANT \nIF THERE IS A DOUBLE*BOND SPANNING SAVED*ATOM 2 AND SAVED*ATOM 3 THEN KILL"}
+        }
+    },
+    "6036": {
+        "name": "Mitsunobu_Sulfonamide_Reaction",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6;$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]),$([#6](=O)-[O;H1])]", "note":"KILL IF THERE IS AN ALCOHOL ANYWHERE, KILL IF THERE IS AN ACID ANYWHERE"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#16;D1]~[#6](~[#6])=[#8]", "note":"FOR EACH SULFUR ATOM ANYWHERE DO THIOCHK \nSAVE AS 1 SPECIFIED*ATOM 1 \nIF THERE IS ONLY ONE ATOM ALPHA TO SAVED*ATOM 1 AND:IF  & \nTHERE IS A CARBON ATOM ALPHA TO SAVED*ATOM 1 \nBEGIN BLK_THIOCHK \nIF THERE IS ONE CARBON ATOM ALPHA TO SAVED*ATOM 2 AND:IF  & \nTHERE IS ONE OXYGEN ATOM ALPHA TO SAVED*ATOM 2 \nSAVE AS 3 THE PREVIOUS LOCANT \nIF THERE IS A DOUBLE*BOND SPANNING SAVED*ATOM 2 AND SAVED*ATOM 3 THEN KILL"}
+        }
+    },
+    "6038": {
+        "name": "Ester_or_Amide_or_Thiolester_Formation",
+        "kill": {
+            "0": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#6;$(C1-N-C1),$([#6]-Br),$([#6]-Cl),$([#6]1-S-[#6]1),$([#6]1-O-[#6]1),$([#6]-I),$([#6]-O-[S$(S-[#6]),$([S;H1])](=O)(=O)),$([#6]-O-P),$([#6](-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note":"KILL IF ANYWHERE OFFPATH THERE IS A GOOD*LEAVING GROUP"},
+            "1": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[#6;$([*](~[!#6;!#1])~[!#6;!#1])]"], "note":"IF THERE IS A CARBON ATOM ALPHA TO ATOM*2 OFFPATH \nBEGIN BADSIDEGRP \nSAVE AS 1 THE CARBON ATOM ALPHA TO ATOM*2 OFFPATH \nKILL IF THERE IS MORE THAN ONE HETERO ATOM ALPHA TO SAVED*ATOM 1"}
+        }
+    },
+    "6039": {
+        "name": "Williamson_Ether_Synthesis",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#42]", "note":"CALL SN2_CENTER AT ATOM*3 AND ATOM*1\n IF UNSUCCESSFUL THEN KILL \n CALL SN2_POSTMECH AT SAVED*ATOM 1 \nIF UNSUCCESSFUL THEN KILL"}
+        }
+    },
+    "6041": {
+        "name": "Buchwald-Hartwig_Reaction_-_Amines",
+        "kill": {
+            "0": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#6;A;$(C1-N-C1),$([#6]-Br),$([#6]-Cl),$([#6]1-S-[#6]1),$([#6]1-O-[#6]1),$([#6]-I),$([#6]-O-[S$(S-[#6]),$([S;H1])](=O)(=O)),$([#6]-O-P),$([#6](-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note":""},
+            "1": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[*;2]~[!#6;!#1]"], "note":"KILL IF THERE IS A HETERO ATOM WITHIN BETA TO ATOM*2 OFFPATH"},
+            "2": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[*;2]~[*]~[!#6;!#1]"], "note":"KILL IF THERE IS A HETERO ATOM WITHIN BETA TO ATOM*2 OFFPATH"},
+            "3": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#16](=[#8])-[Cl]", "note":"FOR EACH SULFUR ATOM ANYWHERE DO SN_CHK \nSAVE AS 1 SPECIFIED*ATOM 1 \nSO_COUNT = 0 \nBEGIN BLK_SOCHK \nFOR EACH OXYGEN ATOM ALPHA TO SAVED*ATOM 1 DO DB_CHK \nIF THERE IS A DOUBLE*BOND SPANNING SAVED*ATOM 1 AND  & \nSPECIFIED*ATOM 1 THEN SO_COUNT = SO_COUNT + 1 \nDB_CHK ENDDO \nBLKEND BLK_SOCHK \nIF THERE IS A CHLORINE ATOM ALPHA TO SAVED*ATOM 1 AND:IF  & \n(SO_COUNT .GE. ONE) THEN KILL"}
+        }
+    },
+    "6043": {
+        "name": "Buchwald-Hartwig_Reaction_-_Sulfonamides",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[I;D1]~[a]", "note":"FOR EACH IODINE ATOM ANYWHERE DO I_CHK \nIF THERE IS ONLY ONE ATOM ALPHA TO SPECIFIED*ATOM 1 AND:IF  & \nTHERE IS AN AROMATIC ATOM ALPHA TO SPECIFIED*ATOM 1 THEN KILL"},
+            "1": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[!#6;!#1]"], "note":"KILL IF THERE IS A HETERO ATOM WITHIN BETA TO ATOM*2 OFFPATH"},
+            "2": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[*]~[!#6;!#1]"], "note":"KILL IF THERE IS A HETERO ATOM WITHIN BETA TO ATOM*2 OFFPATH"},
+            "3": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#16](=[#8])-[Cl]", "note":"FOR EACH SULFUR ATOM ANYWHERE DO SN_CHK \nSAVE AS 1 SPECIFIED*ATOM 1 \nSO_COUNT = 0 \nBEGIN BLK_SOCHK \nFOR EACH OXYGEN ATOM ALPHA TO SAVED*ATOM 1 DO DB_CHK \nIF THERE IS A DOUBLE*BOND SPANNING SAVED*ATOM 1 AND  & \nSPECIFIED*ATOM 1 THEN SO_COUNT = SO_COUNT + 1 \nDB_CHK ENDDO \nBLKEND BLK_SOCHK \nIF THERE IS A CHLORINE ATOM ALPHA TO SAVED*ATOM 1 AND:IF  & \n(SO_COUNT .GE. ONE) THEN KILL"}
+        }
+    },
+    "7005": {
+        "name": "Benzimidazoles_from_o-Phenylenediamines",
+        "kill": {
+            "0": {"OFFPATH": true, "atom_idx": [1], "smarts": ["[1*]~[*;!#1]"], "note":"KILL IF THERE IS AN ATOM ALPHA TO ATOM*1 OFFPATH  & OR: ALPHA TO ATOM*3 OFFPATH"},
+            "1": {"OFFPATH": true, "atom_idx": [3], "smarts": ["[3*]~[*;!#1]"], "note":"KILL IF THERE IS AN ATOM ALPHA TO ATOM*1 OFFPATH  & OR: ALPHA TO ATOM*3 OFFPATH"},
+            "2": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[#6]-[N+](=O)-[O-]"], "note":"KILL IF THERE IS A NITRO GROUP WITHIN BETA TO ATOM*2 OFFPATH"},
+            "3": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[*]~[#6]-[N+](=O)-[O-]"], "note":"KILL IF THERE IS A NITRO GROUP WITHIN BETA TO ATOM*2 OFFPATH"},
+            "4": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#6;$([#6;!$([#6]-[#7,#8]);$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-[#6])(=O)-[#6]),$([#6;!$([#6]-[#7]);!$([#6](-[#8])-[#8])](=O)-[O;H1]),$([#6;!$([#6]-[#7])!$([#6](-[#8])-[#8])](=O)-[#8]-[#6]),$([#6;!$([#6]-[#8])!$([#6](-[#7])-[#7])](=O)-[N;H2]),$([#6;!$([#6]-[#8])!$([#6](-[#7])-[#7])](=O)-[#7;H1]-[#6]),$([#6;!$([#6]-[#8])!$([#6](-[#7])-[#7])](=O)-[#7](-[#6])-[#6]),$([#6;!$([#6]-[#7,#8])](=O)-[Cl,Br,I]),$([#6](=O)-[#16]-[#6]),$([#6](=O)-[#8]-C=O)]"], "note":"KILL IF ANYWHERE OFFPATH THERE IS A CARBONYL GROUP OR: CARBOXYL GROUP"},
+            "5": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[2*$(*[#6])].[#6;A;$(C1-N-C1),$([#6]-Br),$([#6]-Cl),$([#6]1-S-[#6]1),$([#6]1-O-[#6]1),$([#6]-I),$([#6]-O-[S$(S-[#6]),$([S;H1])](=O)(=O)),$([#6]-O-P),$([#6](-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note":"KILL IF THERE IS NOT A CARBON ATOM ALPHA TO ATOM*2 OFFPATH AND:IF  & \nTHERE IS A GOOD*LEAVING GROUP ANYWHERE OFFPATH"},
+            "6": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6;$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]),$([#6]-,:[#7]-[O;H1])]", "note":"KILL IF ANYWHERE THERE IS AN ALCOHOL OR: HYDROXYLAMINE"},
+            "7": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#6;$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]),$(C1-N-C1),$([#6]1-S-[#6]1),$([#6]-O-P),$([#6]1-O-[#6]1),$([#6]-O-[S$(S-[#6]),$([S;H1])](=O)(=O))]"], "note":"KILL IF ANYWHERE OFFPATH THERE IS AN AMINE*1 OR AZIRIDINE OR: EPISULFIDE OR:  & \nPHOSPHONATE OR: EPOXIDE OR: O*SULPHONATE"},
+            "8": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[5*,6*,7*,8*]~[#6;$([#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]),$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]),$([#6]-,:[#7;!$([#7]-,:[#6]=,:[#7])](-,:[#6])-,:[#6])]"], "note":"KILL IF THERE IS AN AMINE GROUP ON ATOM*5 OR: ATOM*6 OR: ATOM*7 OR: ATOM*8"},
+            "9": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[F,Cl,Br,I]~[#6;!$([#6]~[*;2])]"], "note":"IF THERE IS A CARBON ATOM ALPHA TO ATOM*2 OFFPATH \nBEGIN HAL*INCR \nSAVE IT AS 1 \nFOR EACH HALOGEN ATOM ANYWHERE DO LOC_CHK \nSAVE AS 2 THE ATOM ALPHA TO SPECIFIED*ATOM 1 \nKILL IF SAVED*ATOM 2 IS NOT THE SAME AS SAVED*ATOM 1"}
+        }
+    },
+    "7009": {
+        "name": "Acylsulfonamide_from_Sulfonamide_and_Carboxylic_Acid",
+        "kill": {
+            "0": {"OFFPATH": true, "atom_idx": [1], "smarts": ["[1*;!$(*~[#6])]"], "note":"KILL IF THERE IS NOT A CARBON ATOM ALPHA TO ATOM*1 OFFPATH"},
+            "1": {"OFFPATH": true, "atom_idx": [1], "smarts": ["[1*]~[A]~[!#6;!#1]"], "note":"IF THERE IS A HETERO ATOM ALPHA TO SAVED*ATOM 1 OFFPATH \nBEGIN BLK_HETCHK \nKILL IF SAVED*ATOM 1 IS NOT AROMATIC"}
+        }
+    },
+    "7013": {
+        "name": "Benzimidazoles_from_o-Phenylenediamines_and_Aldehydes_-_Iodine",
+        "kill":{
+            "0": {"OFFPATH": true, "atom_idx": [3], "smarts": ["[3*]~[*;!#1]"], "note":"KILL IF THERE IS AN ATOM ALPHA TO ATOM*3 OFFPATH"},
+            "1": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#6;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6])]"], "note":"KILL IF ANYWHERE OFFPATH THERE IS A CARBONYL GROUP"},
+            "2": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#6;A;$(C1-N-C1),$([#6]-Br),$([#6]-Cl),$([#6]1-S-[#6]1),$([#6]1-O-[#6]1),$([#6]-I),$([#6]-O-[S$(S-[#6]),$([S;H1])](=O)(=O)),$([#6]-O-P),$([#6](-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note":"KILL IF THERE IS A GOOD*LEAVING GROUP ANYWHERE OFFPATH"},
+            "3": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*;5,6,7,8]~[#6]-[#7;!1;!3;H2;!$([#7]-[#6]=[#7,#8])]", "note":"KILL IF THERE IS AN AMINE*1 GROUP ON ATOM*5 OR: ATOM*6 OR: ATOM*7 OR: ATOM*8"},
+            "4": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#7;!1;!3;H2;!$([#7]-[#6]=[#7,#8])]"], "note":"KILL IF THERE IS AN AMINE*1 GROUP ANYWHERE OFFPATH"},
+            "5": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*;5,8]~[#6]-[#7;!1;!3;H1;!$([#7]-[#6]=[#7,#8])]-[#6]", "note":"KILL IF THERE IS AN AMINE*2 GROUP ON ATOM*5 OR: ATOM*8"}
+        }
+    },
+    "7014": {
+        "name": "Benzimidazoles_from_o-Phenylenediamines_and_Aldehydes_-_Boronic_Acid",
+        "kill": {
+            "0": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#6;$([#6;!$([#6]-[#7]);$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-[#6])(=O)-[#6])]"], "note":"KILL IF ANYWHERE OFFPATH THERE IS A CARBONYL GROUP"},
+            "1": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#6;A;$(C1-N-C1),$([#6]-Br),$([#6]-Cl),$([#6]1-S-[#6]1),$([#6]1-O-[#6]1),$([#6]-I),$([#6]-O-[S$(S-[#6]),$([S;H1])](=O)(=O)),$([#6]-O-P),$([#6](-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note":"KILL IF THERE IS A GOOD*LEAVING GROUP ANYWHERE OFFPATH"},
+            "2": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*;5,6,7,8]~[#6;$([#6]-,:[#7;!1;!3;H2;!$([#7]-,:[#6]=,:[#7])])]", "note":"KILL IF THERE IS AN AMINE*1 GROUP ON ATOM*5 OR: ATOM*6 OR: ATOM*7 OR: ATOM*8"},
+            "3": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#6]-,:[#7;H2;!$([#7]-,:[#6]=,:[#7])]"], "note":"KILL IF THERE IS AN AMINE*1 GROUP ANYWHERE OFFPATH"},
+            "4": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*;5,8]~[#6;$([#6]-,:[#7;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6])]", "note":"KILL IF THERE IS AN AMINE*2 GROUP ON ATOM*5 OR: ATOM*8"}
+        }
+    },
+    "7015": {
+        "name": "Sulfonamide_from_sulfonic_acid_and_amine",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6;$([#6]-,:[#7;!1;H2;!$([#7]-,:[#6]=,:[#7])]),$([#6]-,:[#7;!1;H1;!$([#7]-,:[#6]=,:[#7])]-,:[#6]),$([#6]-S(=O)(=O)-[O;H1])]", "note":"KILL IF ANYWHERE THERE IS AN AMINE*1 OR: AMINE*2 OR: C*SULFONATE"},
+            "1": {"OFFPATH": true, "atom_idx": [1], "smarts": ["[1*]~[#6]~[#8]"], "note":"FOR EACH CARBON ATOM ALPHA TO ATOM*1 OFFPATH DO AMIDCHK\n KILL IF THERE IS AN OXYGEN ATOM ALPHA TO SPECIFIED*ATOM 1"}
+        }
+    },
+    "7017": {
+        "name": "Sulfonamide_alkylation_with_a_cyclic_ether",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[7*]!@[8*]", "note":"IF ATOM*6 AND ATOM*7 ARE NOT IN A COMMON RING THEN KILL"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[*;6,7]=,#,:[*]", "note":"IF ATOM*6 IS MULTIPLY BONDED OR:IF ATOM*7 IS MULTIPLY BONDED THEN KILL"},
+            "2": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[#6;$([#6]-[#8;!5]-[#6]);!$([#6](-[#8])-[#8]-[#6]);!$([#6](=O)-[#8]-[#6]);!$([#6]-[#8]-[#6]=O)]", "note":"IF THERE IS AN ETHER ANYWHERE THEN KILL"},
+            "3": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#16](~[#7])=[#8]"], "note":"FOR EACH SULFUR ATOM OFFPATH DO THIOAM\n SAVE AS 1 SPECIFIED*ATOM 1\n IF THERE IS A NITROGEN ATOM ALPHA TO SAVED*ATOM 1\n BEGIN O_CHK\n FOR EACH OXYGEN ATOM ALPHA TO SAVED*ATOM 1 DO BND_CHK\n IF THE BOND SPANNING SPECIFIED*ATOM 1 AND  &\n SAVED*ATOM 1 IS A DOUBLE*BOND THEN KILL"}
+        }
+    },
+    "7018": {
+        "name": "Sulfonamide_acylation",
+        "kill": {
+            "0": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#6;$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]),$([#6]-,:[#7;!5;H2;!$([#7]-,:[#6]=,:[#7,#8])]),$([#6]-,:[#7;!5;H1;!$([#7]-,:[#6]=,:[#7,#8])]-,:[#6]),$([#6](=O)-,:[N;H2]),$([#6]=N-[O;H1]),$([#6]-[S;H1]),$([#6](=O)-[O;H1]),$([#6](=O)-[Cl,Br,I])]"], "note":"KILL IF ANYWHERE OFFPATH THERE IS AN ALCOHOL OR: AMINE*1  &\n OR: AMINE*2 OR: AMIDE*1 OR: OXIME OR: THIOL OR: ACID  & \nOR: ACID*HALIDE"},
+            "1": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#16](=[#8])(=[#8])~[#7]"], "note":""}
+        }
+    },
+    "7019": {
+        "name": "Wittig_Reaction",
+        "kill": {
+            "0": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#6;$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]-I),$([#6]-Br)]"], "note":"KILL IF ANYWHERE OFFPATH THERE IS AN ALDEHYDE OR: KETONE\nKILL IF ANYWHERE OFFPATH THERE IS AN IODIDE OR: BROMIDE"},
+            "1": {"OFFPATH": true, "atom_idx": [1], "smarts": ["[1*]=,:,#[*]"], "note":"KILL IF THERE IS A MULTIPLE BOND ON ATOM*1 OFFPATH"},
+            "2": {"OFFPATH": true, "atom_idx": [1], "smarts": ["[1*]~[Si]"], "note":"KILL IF THERE IS A SILICON ATOM ALPHA TO ATOM*1"},
+            "3": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[1*]~[#6;$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]", "note":"KILL IF THERE IS A NONEXPANDABLE*WITHDRAWING GROUP ON ALPHA TO ATOM*1"},
+            "4": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]=,#[*]"], "note":"KILL IF THERE IS A MULTIPLE BOND ON ATOM*2 OFFPATH"},
+            "5": {"OFFPATH": true, "atom_idx": [1], "smarts": ["[1*]~[#6](=O)-,:[#8]-,:[#6]"], "note":"KILL IF THERE IS AN ESTER GROUP ON ALPHA TO ATOM*1 OFFPATH"},
+            "6": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[*;!H0;R0,R1;!$(*=,#,:*)]~[*;$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]"], "note":"FOR EACH ENOLIZABLE SAVED*ATOM 1 DO ENOLCHK\nTHERE ARE WITHDRAWING BONDS ON SPECIFIED*ATOM 1\nIF ANY PREVIOUS BOND LOCANT IS THE SAME AS\nANY BOND NOT*ON ATOM*2 THEN KILL"},
+            "7": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[*;!H0;R0,R1;!$(*=,#,:*)]~[*]~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note":""},
+            "8": {"OFFPATH": true, "atom_idx": [1], "smarts": ["[1*]~[#6;!$([*]=,:,#[*]);!$([#6]-,:[#7]-,:[#6]=O);$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]),$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]),$([#6]-,:[#7]-,:[#6]=O),$(C1-N-C1),$([#6]-O-[#6](=O)-N),$([#6]-N-[#6](=O)-O-[#6]),$([#6;H1](-[S;D2])-[S;D2]),$([#6](-[#6])(-[#6])(-[S;D2])-[S;D2]),$([#6]1-S-[#6]1),$([#6]1-O-[#6]1),$([#6]-,:[#8]-,:[#6]=O),$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]),$([#6](-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6]-[F,Cl,Br,I]),$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]),$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]),$([#6]-O-[#6](=O)-O-[#6]),$([#6]-O-P),$([#6]-[Se]-[#6]),$([#6]-,:[#16]-,:[#6]),$([#6]-S(=O)(=O)-[#6]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-O-[S$(S-[#6]),$([S;H1])](=O)(=O)),$([#6]-S-C#N),$([#6]-[S;H1]),$([#6]-O-[Si](-[#6])(-[#6])-[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note":"FOR EACH LEAVING GROUP ON ALPHA TO ATOM*1 OFFPATH DO LEAVCHK\nIF SPECIFIED*ATOM 1 HAS NO AMIDZ AND:IF SPECIFIED*ATOM 1\n IS NOT MULTIPLY BONDED THEN KILL"},
+            "9": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*]~[*;!H0]-[Cl,Br,I,F]"], "note":""},
+            "10": {"OFFPATH": true, "atom_idx": [2], "smarts": ["[2*;!H0;!H1]~[#6;$([#6]#N)]"], "note":""}
+        }
+    },
+    "7020": {
+        "name": "Wittig_via_Methoxy-Ylide",
+        "kill": {
+            "0": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[3*](=[*])=,:,#[*]", "note":"KILL IF THERE IS A MULTIPLE BOND ON ATOM*3"},
+            "1": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[3*]~[Si]", "note":"KILL IF THERE IS A SILICON ATOM ALPHA TO ATOM*3"},
+            "2": {"OFFPATH": false, "atom_idx": "anywhere", "smarts": "[2*]~[#6;$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]", "note":"KILL IF THERE IS A NONEXPANDABLE*WITHDRAWING GROUP ON ALPHA TO ATOM*2"},
+            "3": {"OFFPATH": true, "atom_idx": [3], "smarts": ["[3*]~[*;!H0;R0,R1;!$(*=,#,:*)]~[*;$([#6]-[N+](=O)-[O-]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-S(=O)(=O)-[#6]),$([#6]-,:[#16](=O)-,:[#6])]"], "note":"SAVE AS 1 ALPHA TO ATOM*3 OFFPATH\nFOR EACH ENOLIZABLE SAVED*ATOM 1 DO ENOLCHK\nTHERE ARE WITHDRAWING BONDS ON SPECIFIED*ATOM 1\nIF ANY PREVIOUS BOND LOCANT IS THE SAME AS  &\nANY BOND NOT*ON ATOM*3 THEN KILL"},
+            "4": {"OFFPATH": true, "atom_idx": [3], "smarts": ["[3*]~[*;!H0;R0,R1;!$(*=,#,:*)]~[*]~[*;$([#6](=O)-[Cl,Br,I]),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](=O)-,:[N;H2]),$([#6](=O)-,:[#7;H1]-,:[#6]),$([#6](=O)-,:[#7](-,:[#6])-,:[#6]),$([#6](=O)-,:[#8]-,:C=O),$([C+]),$([#6](=O)-,:[#8]-,:[#6]),$([#6](-,:[#6])(=O)-,:[#6]),$([#6]=[#7$([#7;H1]),$([#7]-,:[#6])]),$([#6]#N),$([#6]=N-[O;H1]),$([#6](=O)-,:[#16]-,:[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note":"SAVE AS 1 ALPHA TO ATOM*3 OFFPATH\nFOR EACH ENOLIZABLE SAVED*ATOM 1 DO ENOLCHK\nTHERE ARE WITHDRAWING BONDS ON SPECIFIED*ATOM 1\nIF ANY PREVIOUS BOND LOCANT IS THE SAME AS  &\nANY BOND NOT*ON ATOM*3 THEN KILL"},
+            "5": {"OFFPATH": true, "atom_idx": [3], "smarts": ["[3*]~[#6;!$([*]=,:,#[*]);!$([#6]-,:[#7]-,:[#6]=O);$([#6](-,:[#8]-,:[#6])-,:[#8]-,:[#6]),$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]),$([#6]-,:[#7]-,:[#6]=O),$(C1-N-C1),$([#6]-O-[#6](=O)-N),$([#6]-N-[#6](=O)-O-[#6]),$([#6;H1](-[S;D2])-[S;D2]),$([#6](-[#6])(-[#6])(-[S;D2])-[S;D2]),$([#6]1-S-[#6]1),$([#6]1-O-[#6]1),$([#6]-,:[#8]-,:[#6]=O),$([#6;$([#6]-,:[#8]-,:[#6]);!$([#6](-,:[#8])-,:[#8]-,:[#6]);!$([#6](=O)-,:[#8]-,:[#6]);!$([#6]-,:[#8]-,:[#6]=O)]),$([#6](-[F,Cl,Br,I])-[F,Cl,Br,I]),$([#6]-[F,Cl,Br,I]),$([#6]-N(-[#6])-[#6](=O)-N(-[#6])-[#6]),$([#6;$([#6]-N-[#6](=O)-[N;H1]),$([#6]-[N;H1]-[#6](=O)-N)]),$([#6]-O-[#6](=O)-O-[#6]),$([#6]-O-P),$([#6]-[Se]-[#6]),$([#6]-,:[#16]-,:[#6]),$([#6]-S(=O)(=O)-[#6]),$([#6]-S(=O)(=O)-[O;H1]),$([#6]-O-[S$(S-[#6]),$([S;H1])](=O)(=O)),$([#6]-S-C#N),$([#6]-[S;H1]),$([#6]-O-[Si](-[#6])(-[#6])-[#6]),$([#6](-[F,Cl,Br,I])(-[F,Cl,Br,I])-[F,Cl,Br,I])]"], "note":"FOR EACH LEAVING GROUP ON ALPHA TO ATOM*3 OFFPATH DO LEAVCHK\nIF SPECIFIED*ATOM 1 HAS NO AMIDZ AND:IF SPECIFIED*ATOM 1  &\nIS NOT MULTIPLY BONDED THEN KILL"},
+            "6": {"OFFPATH": true, "atom_idx": [3], "smarts": ["[3*]~[*;!H0]~[Cl,Br,I,F]"], "note": "IF THERE IS A HALOGEN*ATOM ALPHA TO SAVED*ATOM 1 AND:IF  &\nTHERE IS A HYDROGEN ON SAVED*ATOM 1 THEN KILL"},
+            "7": {"OFFPATH": true, "atom_idx": [3], "smarts": ["[3*;!H0;!H1]~[#6;$([#6]#N)]"], "note":"IF THERE IS A NITRILE ON ALPHA TO ATOM*3 OFFPATH\nBEGIN CN_CHK\nKILL IF THERE ARE TWO HYDROGENS ON ATOM*3"},
+            "8": {"OFFPATH": true, "atom_idx": [3], "smarts": ["[3*;!$(*~[#6])]~[!#6;!#1]"], "note":"IF THERE IS A HETERO ATOM ALPHA TO ATOM*3\nBEGIN WG_CHK\nKILL IF THERE IS NOT A CARBON ATOM ALPHA TO ATOM*3 OFFPATH"}
+        }
+    },
+    "7021": {
+        "name": "Horner-Wadsworth-Emmons_Olefination",
+        "kill": {
+            "0": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#6;$([#6]-Br),$([#6]-I),$([#6;$([#6;H1](=O)[#6]),$([#6;H2]=O)]),$([#6](-,:[#6])(=O)-,:[#6])]"], "note":""}
+        }
+    },
+    "7022": {
+        "name": "Chan-Lam_coupling",
+        "kill": {
+            "0": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#6;$([#6;$([#6]-[O;H1]);!$([#6](~O)-O)]),$([#6]-[S;H1])]"], "note":""},
+            "1": {"OFFPATH": true, "atom_idx": "anywhere", "smarts": ["[#7;!2;!H0]"], "note":""}
+        }
+    }
+}
