@@ -4,6 +4,7 @@ from pathlib import Path
 import argparse
 import logging
 import json
+import datetime
 
 from rdkit import Chem
 
@@ -147,10 +148,10 @@ def kill_statements(reaction_index, outpath, kill_patterns, reactions, reaction_
                 name_dict[f"{reaction_idx}_{pattern_idx}"][f"{sub_pattern_idx}"].append(f"kill_{idx2:0{len(str(len(pairs)))}}")
                 kill_outputs = pd.concat([kill_outputs, pd.concat([temp_kill_output1, temp_kill_output2], axis=1)], axis=1)
                 print(f"added {f"kill_{idx2:0{len(str(len(pairs)))}}"}")
-            print(f"added {len(pairs)} kill statements")
+            print(f"added {len(pairs)} kill statement(s)")
         else:
-            kill_output1 = kill_output1.apply(lambda x: list(x.keys())[0])
-            kill_output2 = kill_output2.apply(lambda x: list(x.keys())[0])
+            kill_output1 = kill_output1.apply(lambda x: list(x.keys())[0] if x[list(x.keys())[0]] else None)
+            kill_output2 = kill_output2.apply(lambda x: list(x.keys())[0] if x[list(x.keys())[0]] else None)
             kill_output1.name = temp_name + "_r1_kill_0"
             kill_output2.name = temp_name + "_r2_kill_0"
             name_dict[f"{reaction_idx}_{pattern_idx}"][f"{sub_pattern_idx}"].append("kill_0")
@@ -167,22 +168,10 @@ def kill_statements(reaction_index, outpath, kill_patterns, reactions, reaction_
     df.to_csv(reaction_outpath / f"results.csv")
     with open(reaction_outpath / f"kill_names.json", "w") as f:
         json.dump(name_dict, f, indent=4)
-    columns = list(set(df.columns) - set(["smiles", "name"]))
-    logging.info(f"number of 1 or more matches and number of killed matches:")
-    print(f"number of of 1 or more matches and number of killed matches:")
-    #nan values to empty
-    stats_df = ((df[[c for c in columns if "kill" not in c]] >= 1.0)).sum(axis=0)
-    kill_stats = ((~df[[c for c in columns if "kill" in c]].isna())).sum(axis=0)
-    stats_df = pd.concat([stats_df, kill_stats], axis=0).sort_index()
-    stats_df.to_csv(reaction_outpath / f"stats.csv", header=False)
-    lines = str(stats_df).split("\n")[:-1]
-    for line in lines:
-        print(line)
-        logging.info(line)
-    print("#"*50)
-    logging.info("#"*50)
+    get_stats(reaction_outpath, apply_kill=True)
 
 def validate_reactants(bbs_path, outpath, indices=None, apply_kill=False, reaction_path=None, kill_path=None, disallow_exocyclic_doublebonds=False, uniquify=True, use_unique_matches=False):
+    start = datetime.datetime.now()
     bbs_path = Path(bbs_path)
     if reaction_path:
         reaction_pattern = load_pattern_json(filename=reaction_path)
@@ -218,6 +207,32 @@ def validate_reactants(bbs_path, outpath, indices=None, apply_kill=False, reacti
                 name_dict[f"{reaction_idx}_{pattern_idx}"][f"{sub_pattern_idx}"] = ["no_kill"]
             with open(reaction_outpath / f"kill_names.json", "w") as f:
                 json.dump(name_dict, f, indent=4)
+            get_stats(reaction_outpath, apply_kill=False)
+    total_time = (datetime.datetime.now() - start)
+    logging.info(f"Total time: {total_time}")
+    print(f"Total time: {total_time}")
+
+
+
+def get_stats(reaction_outpath, apply_kill=False):
+    df = pd.read_csv(reaction_outpath / f"results.csv", index_col=0, low_memory=False)
+    columns = list(set(df.columns) - set(["smiles", "name"]))
+    info_add = " and number of killed matches" if apply_kill else ""
+    logging.info("number of 1 or more matches" + info_add + ":")
+    print("number of of 1 or more matches" + info_add + ":")
+    stats_df = ((df[[c for c in columns if "kill" not in c]] >= 1.0)).sum(axis=0)
+    if apply_kill:
+        kill_stats = ((~df[[c for c in columns if "kill" in c]].isna())).sum(axis=0)
+        stats_df = pd.concat([stats_df, kill_stats], axis=0)
+    stats_df = stats_df.sort_index()
+    stats_df.to_csv(reaction_outpath / f"stats.csv", header=False)
+    lines = str(stats_df).split("\n")[:-1]
+    for line in lines:
+        print(line)
+        logging.info(line)
+    print("#"*50)
+    logging.info("#"*50)
+
 
 if __name__=="__main__":
     parser = argparse.ArgumentParser()
@@ -251,7 +266,7 @@ if __name__=="__main__":
         outpath = Path.cwd() / args.name
     else:
         outpath = Path(args.outpath) / args.name
-    if outpath.exists() and not args.overwrite:
+    if outpath.exists() and not args.overwrite and not args.indices:
         raise FileExistsError(f"{outpath} already exists. Use --overwrite to overwrite the directory.")
     elif outpath.exists() and args.overwrite:
         import shutil

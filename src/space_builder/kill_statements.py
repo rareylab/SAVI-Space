@@ -103,7 +103,7 @@ def apply_kill(kill_pattern, atom_map, idx, partitions, marked_reactant, disallo
 
 def apply_kill_statements(kill_statements, atom_map, idx, partitions, marked_reactant, disallow_exocyclic_doublebonds=False):
     if idx >= len(kill_statements):
-        return {f"kill_{idx}": False}
+        return {f"kill_end": False}
     # apply CHMTRN rules on partitions and return True if kill SMARTS pattern matches
     kill_pattern = kill_statements[str(idx)]
 

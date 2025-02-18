@@ -1,6 +1,7 @@
 from pathlib import Path
 import pandas as pd
 import json
+import datetime
 
 from utils import load_reactions, load_pattern_json, get_valid, single_matching, get_filtered_bbs_path
 
@@ -60,8 +61,8 @@ def get_bbs_for_reactant(path, name, reaction_idx, reaction, reactions, apply_ki
                 smirks_file.write(pattern)
 
             with open(list_path, 'a') as list_file:
-                list_file.write(f"\n{str(reaction_path / f'rxn{sub_reaction_name}_{kill_name}.smirks')} ; " +
-                                f"{str(reactant_paths[0])} ; {str(reactant_paths[1])}")
+                list_file.write(f"{str(reaction_path / f'rxn{sub_reaction_name}_{kill_name}.smirks')} ; " +
+                                f"{str(reactant_paths[0])} ; {str(reactant_paths[1])}\n")
 
 
 def create_bbs(path, name, reaction_index, reaction_path=None, apply_kills=True):
@@ -76,36 +77,37 @@ def create_bbs(path, name, reaction_index, reaction_path=None, apply_kills=True)
 
 def create_Colibri_commands(path, name="SAVI-Space", use_scripts=False):
     output_path = path / "spaces/Colibri"
+    output_path.mkdir(parents=True, exist_ok=True)
     list_path = path / f"space_tool_input/Colibri/{name}.list"
 
     creation_script = ["#!/bin/bash", "", "echo 'Creating Space...'", ""]
     if use_scripts:
-        creation_script.append(f"SCRIPT_GENERATE_SPACELIGHT_DB_FILE=<path to generate_spacelight_db_file.py>")
-        creation_script.append(f"SCRIPT_GENERATE_SINGLE_FRAGMENT_SPACES=<path to generate_single_fragment_spaces.py>")
-        creation_script.append(f"SCRIPT_MERGE_SINGLE_FRAGMENT_SPACES=<path to merge_single_fragment_spaces.py>")
+        creation_script.append('if [ -z "$SCRIPT_GENERATE_SPACELIGHT_DB_FILE" ]; then')
+        creation_script.append(f"    export SCRIPT_GENERATE_SPACELIGHT_DB_FILE=path-to-generate_spacelight_db_file.py")
+        creation_script.append(f"    export SCRIPT_GENERATE_SINGLE_FRAGMENT_SPACES=path-to-generate_single_fragment_spaces.py")
+        creation_script.append(f"    export SCRIPT_MERGE_SINGLE_FRAGMENT_SPACES=path-to-merge_single_fragment_spaces.py")
         creation_script.append("")
-        creation_script.append(f"TOOL_SPACELIGHT_DB_CREATOR=<path to spacelight_db_creator>")
-        creation_script.append(f"TOOL_EXECUTABLE_REACTION_SYNTHESIZER=<path to reaction_synthesizer>")
-        creation_script.append(f"TOOL_FRAGSPACE_MERGER=<path to fragspace_merger>")
+        creation_script.append(f"    export TOOL_SPACELIGHT_DB_CREATOR=path-to-spacelight_db_creator")
+        creation_script.append(f"    export TOOL_EXECUTABLE_REACTION_SYNTHESIZER=path-to-reaction_synthesizer")
+        creation_script.append(f"    export TOOL_FRAGSPACE_MERGER=path-to-fragspace_merger")
         creation_script.append("")
-        creation_script.append(f"FUNCTIONAL_GROUP_LABEL=<path to FunctionalGroupLabel.txt>")
-        creation_script.append(f"PROTECTING_GROUPS=<path to ProtectingGroups.txt>")
+        creation_script.append(f"    export FUNCTIONAL_GROUP_LABEL=path-to-FunctionalGroupLabel.txt")
+        creation_script.append(f"    export PROTECTING_GROUPS=path-to-ProtectingGroups.txt")
+        creation_script.append("fi")
         creation_script.append("")
-
-
         creation_script.append(f"python $SCRIPT_GENERATE_SPACELIGHT_DB_FILE -t $TOOL_SPACELIGHT_DB_CREATOR " +
                 f"-i {list_path} -o {output_path} -f {name} " +
                 "--tool_executable_reaction_synthesizer $TOOL_EXECUTABLE_REACTION_SYNTHESIZER " +
-                "-s $FUNCTIONAL_GROUP_LABEL -p $PROTECTING_GROUPS")
+                f"-s $FUNCTIONAL_GROUP_LABEL -p $PROTECTING_GROUPS --logfile {output_path / 'SPACELIGHT_DB_CREATOR.log'}")
         creation_script.append("")
-
         creation_script.append(f"python $SCRIPT_GENERATE_SINGLE_FRAGMENT_SPACES -t $TOOL_EXECUTABLE_REACTION_SYNTHESIZER " +
-                f"-i {list_path} -o {output_path / 'singleFragSpaces'} -s $FUNCTIONAL_GROUP_LABEL -p $PROTECTING_GROUPS")
+                f"-i {list_path} -o {output_path / 'singleFragSpaces'} -s $FUNCTIONAL_GROUP_LABEL -p $PROTECTING_GROUPS --logfile {output_path / 'SINGLE_FRAGMENT_SPACES.log'}")
         creation_script.append("")
-
         creation_script.append(f"python $SCRIPT_MERGE_SINGLE_FRAGMENT_SPACES -t $TOOL_FRAGSPACE_MERGER " +
                 f"-i {list_path} -d {output_path / 'singleFragSpaces'} -o {output_path / 'mergedFragSpace'} " +
-                f"-f Merged_{name} -a {output_path / f'{name}.tfsdb'}")
+                f"-f {name} -a {output_path / f'{name}.tfsdb'} --space_name {name} --vendor_name 'AMD University of Hamburg' " +
+                f"--release_date {datetime.datetime.now().strftime('%Y-%m-%d')} --vendor_type academic --vendor_webpage 'https://software.zbh.uni-hamburg.de/' " +
+                f"--vendor_image_file /work/korn/SAVI-Space/SAVISpace_icon.png --logfile {output_path / 'MERGE_SINGLE_FRAGMENT_SPACES.log'}")
     else:
         raise NotImplementedError("Please set 'use_scripts' to True")
     return creation_script
@@ -162,9 +164,22 @@ if __name__ == "__main__":
     list_path = path / "space_tool_input/Colibri/"
     list_path.mkdir(parents=True, exist_ok=True)
     with open(list_path / f"{args.name}.list", 'w') as list_file:
-        list_file.write(f"@merge")
-    for reaction_idx in reaction_indices:
+        pass
+
+    for idx, reaction_idx in enumerate(reaction_indices):
         create_bbs(path, args.name, reaction_idx, reaction_path=args.reaction_path, apply_kills=not args.no_kills)
+
+    with open(list_path / f"{args.name}.list", 'r') as list_file:
+        lines = list_file.readlines()
+    # put merge commands in between
+    number_of_merges = 4
+    loc = 0
+    while loc < len(lines):
+        lines.insert(loc, "@merge\n")
+        loc += (len(lines)//number_of_merges + 1)
+    with open(list_path / f"{args.name}.list", 'w') as list_file:
+        list_file.write("".join(lines))
+
 
     bash_script = create_Colibri_commands(path, name=args.name, use_scripts=True)
     with open(path / "create_Colibri_space.sh", 'w') as script_file:
