@@ -1,3 +1,10 @@
+# This material is part of the SAVI-Space created by Malte Korn and Matthias Rarey
+# at the Center for Bioinformatics, University of Hamburg, with support from
+# Marc Nicklaus (NIH,NCI), Phil Judson, Raphael Klein (BioSolveIT GmbH) and
+# Christian Lemmen (BioSolveIT GmbH).
+# Philip Judson and Marc Nicklaus provided the LHASA transform rules and assisted with their knowledge about SAVI-2020.
+# SAVI-Space and all its components including this file/directory is licensed under CC-BY-NC 4.0.
+
 import json
 from pathlib import Path
 import re
@@ -70,6 +77,8 @@ def load_reactions(filename='smirks.json'):
     unique_matches = {}
 
     for reaction_index in reaction_pattern:
+        if reaction_index.startswith("_"):
+                continue
         reactions[reaction_index] = []
         unique_matches[reaction_index] = []
         for idx, patterns in enumerate(reaction_pattern[reaction_index]["smirks"]):
@@ -87,12 +96,16 @@ def get_reaction_name(reaction_idx, filename='smirks.json'):
 def load_pattern_json(filename='smirks.json'):
     with open(f"data/{filename}") as json_file:
         patterns_json = json.load(json_file)
+    # delete comment from json
+    patterns_json = {key: patterns_json[key] for key in patterns_json if not key.startswith("_")}
     return patterns_json
 
 
 def load_kill_patterns(filename="KILL.json"):
     with open(f"data/{filename}") as json_file:
         kill_pattern = json.load(json_file)
+    # delete comment from json
+    kill_pattern = {key: kill_pattern[key] for key in kill_pattern if not key.startswith("_")}
     return kill_pattern
 
 def int_to_char(integer):

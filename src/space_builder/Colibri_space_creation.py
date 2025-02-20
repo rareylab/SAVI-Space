@@ -1,3 +1,10 @@
+# This material is part of the SAVI-Space created by Malte Korn and Matthias Rarey
+# at the Center for Bioinformatics, University of Hamburg, with support from
+# Marc Nicklaus (NIH,NCI), Phil Judson, Raphael Klein (BioSolveIT GmbH) and
+# Christian Lemmen (BioSolveIT GmbH).
+# Philip Judson and Marc Nicklaus provided the LHASA transform rules and assisted with their knowledge about SAVI-2020.
+# SAVI-Space and all its components including this file/directory is licensed under CC-BY-NC 4.0.
+
 from pathlib import Path
 import pandas as pd
 import json
@@ -32,6 +39,7 @@ def get_bbs_for_reactant(path, name, reaction_idx, reaction, reactions, apply_ki
 
                 else:
                     kill_name = "no_kill"
+                    print("Single matching", single_matching(bbs, reactant_idx, sub_reaction_name).sum())
                     smiles.append(bbs[single_matching(bbs, reactant_idx, sub_reaction_name)])
                     sub_reaction_idx_path = lambda x: molecule_path / f"{reaction_idx}/rxn{sub_reaction_name}_{x}.smi"
 

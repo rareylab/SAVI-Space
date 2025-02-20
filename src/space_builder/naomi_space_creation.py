@@ -1,3 +1,10 @@
+# This material is part of the SAVI-Space created by Malte Korn and Matthias Rarey
+# at the Center for Bioinformatics, University of Hamburg, with support from
+# Marc Nicklaus (NIH,NCI), Phil Judson, Raphael Klein (BioSolveIT GmbH) and
+# Christian Lemmen (BioSolveIT GmbH).
+# Philip Judson and Marc Nicklaus provided the LHASA transform rules and assisted with their knowledge about SAVI-2020.
+# SAVI-Space and all its components including this file/directory is licensed under CC-BY-NC 4.0.
+
 from pathlib import Path
 import pandas as pd
 import json
@@ -172,7 +179,17 @@ if __name__ == "__main__":
         create_bbs(path, reaction_idx, reaction_path=args.reaction_path, apply_kills=not args.no_kills)
 
 
-    bash_script = ["#!/bin/bash", "", "echo 'Running spacelight...'", "", "SPACELIGHT=<path_to_spacelight>"]
+    bash_script = [
+        "#!/bin/bash",
+        "",
+        "echo 'Running spacelight...'",
+        "",
+        "if [ -z \"$SPACELIGHT\" ]; then",
+        "    echo 'Please set spacelight binary path as SPACELIGHT environment variable'",
+        "    echo 'export SPACELIGHT=/path/to/spacelight'",
+        "    exit 1",
+        "fi",
+        ""]
 
     if args.indices:
         for idx in args.indices:

@@ -1,3 +1,10 @@
+# This material is part of the SAVI-Space created by Malte Korn and Matthias Rarey
+# at the Center for Bioinformatics, University of Hamburg, with support from
+# Marc Nicklaus (NIH,NCI), Phil Judson, Raphael Klein (BioSolveIT GmbH) and
+# Christian Lemmen (BioSolveIT GmbH).
+# Philip Judson and Marc Nicklaus provided the LHASA transform rules and assisted with their knowledge about SAVI-2020.
+# SAVI-Space and all its components including this file/directory is licensed under CC-BY-NC 4.0.
+
 import re, json, copy, argparse, itertools
 
 from tqdm import tqdm
@@ -7,6 +14,19 @@ from rdkit.Chem import AllChem
 # set rdkit log level to error
 from rdkit import RDLogger
 RDLogger.DisableLog('rdApp.*')
+
+# load keywords global
+try:
+    with open('src/transpiler/chmtrn_keywords_to_smarts.json') as f:
+        keywords = json.load(f)
+except:
+    try:
+        with open('transpiler/chmtrn_keywords_to_smarts.json') as f:
+            keywords = json.load(f)
+    except:
+        with open('chmtrn_keywords_to_smarts.json') as f:
+            keywords = json.load(f)
+
 
 def check_patran_syntax(patran_string):
     def patran_syntax_error(text, patran_string, pos):
@@ -69,12 +89,6 @@ def check_patran_syntax(patran_string):
         "not_begin_with": ["BOND", "FUSION", "INDEX", "RING",
                         "PROPERTY", "START_SIDECHAIN", "END_SIDECHAIN"]
     }
-    try:
-        with open('transpiler/chmtrn_keywords_to_smarts.json') as f:
-            keywords = json.load(f)
-    except:
-        with open('chmtrn_keywords_to_smarts.json') as f:
-            keywords = json.load(f)
 
     tokens, remainder = parser.scan(patran_string.strip())
 
@@ -177,13 +191,6 @@ def patran_to_graph(parsed_patran):
                "type": bondtype,
                "fusion": fusion}
 
-    try:
-        with open('transpiler/chmtrn_keywords_to_smarts.json') as f:
-            keywords = json.load(f)
-    except:
-        with open('chmtrn_keywords_to_smarts.json') as f:
-            keywords = json.load(f)
-
     sidechain_indices = [0] # stack of indeces to enumerate the sidechains; 0 -> mainchain
     current_sidechain_index = 0 # number to specify index of the last new sidechain
     node_indices = [0] # stack of node indices to handle start and end node for edges
@@ -260,13 +267,6 @@ def transform_properties_patran_to_smarts(props, element):
 
     def unknown_sign_error(sign):
         raise SyntaxError(f"Unknown sign: '{sign}'.")
-
-    try:
-        with open('transpiler/chmtrn_keywords_to_smarts.json') as f:
-            keywords = json.load(f)
-    except:
-        with open('chmtrn_keywords_to_smarts.json') as f:
-            keywords = json.load(f)
 
     smarts_props = []
 
@@ -412,13 +412,6 @@ def transform_properties_patran_to_smarts(props, element):
 
 
 def graph_patran_to_smarts(patran_graph, product=False):
-    try:
-        with open('transpiler/chmtrn_keywords_to_smarts.json') as f:
-            keywords = json.load(f)
-    except:
-        with open('chmtrn_keywords_to_smarts.json') as f:
-            keywords = json.load(f)
-
     # create list of a deepcopy of the patran graph to create multiple smarts graphs
     smarts_graph_list = [copy.deepcopy(patran_graph)]
 
@@ -642,9 +635,9 @@ def translate(patran_string, validate_atomindices=False, pbar=None):
 
     except Exception as e:
         if pbar:
-            pbar.write(f"{key} | pattern {reaction_idx}: {e}")
+            pbar.write(f"Error in pattern {patran_string}: {e}")
         else:
-            print(f"{key} | pattern {reaction_idx}: {e}")
+            print(f"Error in pattern {patran_string}: {e}")
         return []
 
 
@@ -661,13 +654,22 @@ if __name__ == "__main__":
     if args.file and args.output:
         with open(args.file) as f:
             data = json.load(f)
-        result = {}
+        result = {"_comment": ["This material is part of the SAVI-Space created by Malte Korn and Matthias Rarey",
+                "at the Center for Bioinformatics, University of Hamburg, with support from",
+                "Marc Nicklaus (NIH,NCI), Phil Judson, Raphael Klein (BioSolveIT GmbH) and",
+                "Christian Lemmen (BioSolveIT GmbH).",
+                "Philip Judson and Marc Nicklaus provided the LHASA transform rules and assisted with their knowledge about SAVI-2020.",
+                "SAVI-Space and all its components including this file/directory is licensed under CC-BY-NC 4.0."]}
         pbar = tqdm(data, desc="Transpiling patran to smarts")
         for key in pbar:
+            if key.startswith("_"):
+                continue
             number, name = key.split("_", 1)
-            result[number] = {"name": name, "ring": None, "smirks": []}
-            for reaction_idx, reaction in enumerate(tqdm(data[key], leave=False, desc=f"Transpiling {key}")):
+            result[number] = {"name": name, "unique_matching": [], "ring": None, "smirks": []}
+            for reaction in tqdm(data[key], leave=False, desc=f"Transpiling {key}"):
+
                 result[number]["smirks"].append(translate(reaction, pbar=pbar))
+                result[number]["unique_matching"].append([[] for _ in range(len(result[number]["smirks"][-1]))])
 
             # validate smirks with rdkit
             for smirks in result[number]["smirks"]:
