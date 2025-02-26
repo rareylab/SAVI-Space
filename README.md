@@ -176,10 +176,9 @@ This material is part of the SAVI-Space project, created by Malte Korn and Matth
 
 Philip Judson and Marc Nicklaus provided the LHASA transform rules and contributed their expertise regarding SAVI-2020.
 
-The SAVI-Space project, including all its components and this file/directory, is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License (CC BY-NC 4.0). Under this license, you are free to share, copy, and redistribute the material in any medium or format, as well as adapt, transform, and build upon the material, under the following terms:
+The SAVI-Space project, including all its components and this file/directory, is licensed under the Creative Commons Attribution 4.0 International License (CC-BY 4.0). Under this license, you are free to share, copy, and redistribute the material in any medium or format, as well as adapt, transform, and build upon the material, under the following terms:
 
     Attribution: You must give appropriate credit, provide a link to the license, and indicate if changes were made.
-    NonCommercial: You may not use the material for commercial purposes.
 
 The building blocks used within this project are sourced from Enamine Ltd..
 
@@ -191,6 +190,6 @@ For further information about SAVI-Space or licensing, please contact the Center
 
 ## License
 
-This project is licensed under the `CC-BY-NC 4.0` License. See the `LICENSE` file for details.
+This project is licensed under the `CC-BY 4.0` License. See the `LICENSE` file for details.
 
 ---

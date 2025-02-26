@@ -4,7 +4,7 @@
                 "Marc Nicklaus (NIH,NCI), Phil Judson, Raphael Klein (BioSolveIT GmbH) and",
                 "Christian Lemmen (BioSolveIT GmbH).",
                 "Philip Judson and Marc Nicklaus provided the LHASA transform rules and assisted with their knowledge about SAVI-2020.",
-                "SAVI-Space and all its components including this file/directory is licensed under CC-BY-NC 4.0."],
+                "SAVI-Space and all its components including this file/directory is licensed under CC-BY 4.0."],
     "1031_Paal-Knorr_Pyrrole_Synthesis": [
         "N%C(-C[FGNOT=ACID,XWITHDRAWING,LEAVING])%C[HETS=0]%[FUSION=NO]C[HETS=0]%C(-C[FGNOT=ACID,XWITHDRAWING,LEAVING])%@1 => N^1 + C^2(=O)(-C^3[FGNOT=ACID,XWITHDRAWING,LEAVING])-C^4[HETS=0]-[FUSION=NO]C^5[HETS=0]-C^6(=O)(-C^7[FGNOT=ACID,XWITHDRAWING,LEAVING])",
         "N-C(-C[FGNOT=ACID,XWITHDRAWING,LEAVING])=C[HETS=0]-[FUSION=NO]C[HETS=0]=C(-C[FGNOT=ACID,XWITHDRAWING,LEAVING])-@1 => N^1 +C^2(=O)(-C^3[FGNOT=ACID,XWITHDRAWING,LEAVING])-C^4[HETS=0]-[FUSION=NO]C^5[HETS=0]-C^6(=O)(-C^7[FGNOT=ACID,XWITHDRAWING,LEAVING])"

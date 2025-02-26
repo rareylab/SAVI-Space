@@ -3,7 +3,7 @@
 # Marc Nicklaus (NIH,NCI), Phil Judson, Raphael Klein (BioSolveIT GmbH) and
 # Christian Lemmen (BioSolveIT GmbH).
 # Philip Judson and Marc Nicklaus provided the LHASA transform rules and assisted with their knowledge about SAVI-2020.
-# SAVI-Space and all its components including this file/directory is licensed under CC-BY-NC 4.0.
+# SAVI-Space and all its components including this file/directory is licensed under CC-BY 4.0.
 
 from tqdm import tqdm
 import pandas as pd

@@ -3,7 +3,7 @@
 # Marc Nicklaus (NIH,NCI), Phil Judson, Raphael Klein (BioSolveIT GmbH) and
 # Christian Lemmen (BioSolveIT GmbH).
 # Philip Judson and Marc Nicklaus provided the LHASA transform rules and assisted with their knowledge about SAVI-2020.
-# SAVI-Space and all its components including this file/directory is licensed under CC-BY-NC 4.0.
+# SAVI-Space and all its components including this file/directory is licensed under CC-BY 4.0.
 
 import re, json, copy, argparse, itertools
 
@@ -659,7 +659,7 @@ if __name__ == "__main__":
                 "Marc Nicklaus (NIH,NCI), Phil Judson, Raphael Klein (BioSolveIT GmbH) and",
                 "Christian Lemmen (BioSolveIT GmbH).",
                 "Philip Judson and Marc Nicklaus provided the LHASA transform rules and assisted with their knowledge about SAVI-2020.",
-                "SAVI-Space and all its components including this file/directory is licensed under CC-BY-NC 4.0."]}
+                "SAVI-Space and all its components including this file/directory is licensed under CC-BY 4.0."]}
         pbar = tqdm(data, desc="Transpiling patran to smarts")
         for key in pbar:
             if key.startswith("_"):
