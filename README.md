@@ -193,3 +193,11 @@ For further information about SAVI-Space or licensing, please contact the Center
 This project is licensed under the `CC-BY 4.0` License. See the `LICENSE` file for details.
 
 ---
+
+## References
+
+Publication:
+Korn, M., Judson, P., Klein, R. et al. SAVI Space—combinatorial encoding of the billion-size synthetically accessible virtual inventory. Sci Data 12, 1064 (2025). https://doi.org/10.1038/s41597-025-05384-z
+
+Dataset:
+Korn, Malte. (2025). SAVI-Space (Version 1.0.0) [Data set]. http://doi.org/10.25592/uhhfdm.15990

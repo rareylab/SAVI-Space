@@ -23,16 +23,16 @@ export SPACELIGHT=./spacelight
 echo "SAVI-Space-2024 no_kill" ##
 #################################
 
-# echo "reactants validation"
-# ###########################
-# python src/space_builder/reactants_validation.py -n SAVI-Space-2024-no_kill  --reaction_path smirks_Colibri.json  -b /work/korn/SAVISpace/data/building_blocks/Enamine_Building_Blocks_Stock_288748cmpd_20240717_max_molecular_weight_700.0_fragments_standardized.smi --n_cores 36 --unique_matches --cluster  --overwrite
+echo "reactants validation"
+###########################
+python src/space_builder/reactants_validation.py -n SAVI-Space-2024-no_kill  --reaction_path smirks_Colibri.json  -b /work/korn/SAVISpace/data/building_blocks/Enamine_Building_Blocks_Stock_288748cmpd_20240717_max_molecular_weight_700.0_fragments_standardized.smi --n_cores 36 --unique_matches --cluster  --overwrite
 
 echo "space creation"
 #####################
 
 echo "NAOMI"
-# python src/space_builder/naomi_space_creation.py -n SAVI-Space-2024-no_kill --no_kills --n_cores 36 --reaction_path smirks_Naomi.json --deprotection_path /work/korn/SAVISpace/data/space_creation_data/protectionpattern.smarts --overwrite
-# bash SAVI-Space-2024-no_kill/create_naomi_space.sh
+python src/space_builder/naomi_space_creation.py -n SAVI-Space-2024-no_kill --no_kills --n_cores 36 --reaction_path smirks_Naomi.json --deprotection_path /work/korn/SAVISpace/data/space_creation_data/protectionpattern.smarts --overwrite
+bash SAVI-Space-2024-no_kill/create_naomi_space.sh
 
 echo "Colibri"
 python src/space_builder/Colibri_space_creation.py -n SAVI-Space-2024-no_kill --no_kills --n_cores 36 --reaction_path smirks_Colibri.json --deprotection_path /work/korn/SAVISpace/data/space_creation_data/protectionpattern.smarts --overwrite
@@ -42,18 +42,18 @@ bash SAVI-Space-2024-no_kill/create_Colibri_space.sh
 echo "SAVI-Space-2020 no_kill" ##
 #################################
 
-# echo "reactants validation"
-# ###########################
-# python src/space_builder/reactants_validation.py -n SAVI-Space-2020-no_kill --reaction_path smirks_Colibri.json -b /work/korn/SAVISpace/data/building_blocks/Dec2019_instock_BBs_155k-sdf_max_molecular_weight_700.0_fragments_standardized.smi --n_cores 36 --unique_matches --cluster --overwrite
+echo "reactants validation"
+###########################
+python src/space_builder/reactants_validation.py -n SAVI-Space-2020-no_kill --reaction_path smirks_Colibri.json -b /work/korn/SAVISpace/data/building_blocks/Dec2019_instock_BBs_155k-sdf_max_molecular_weight_700.0_fragments_standardized.smi --n_cores 36 --unique_matches --cluster --overwrite
 
 echo "space creation"
 #####################
 
-# echo "NAOMI"
-# # python src/space_builder/naomi_space_creation.py -n SAVI-Space-2020-no_kill --no_kills --n_cores 36 --reaction_path smirks_Naomi.json --deprotection_path /work/korn/SAVISpace/data/space_creation_data/protectionpattern.smarts --overwrite
+echo "NAOMI"
+python src/space_builder/naomi_space_creation.py -n SAVI-Space-2020-no_kill --no_kills --n_cores 36 --reaction_path smirks_Naomi.json --deprotection_path /work/korn/SAVISpace/data/space_creation_data/protectionpattern.smarts --overwrite
 bash SAVI-Space-2020-no_kill/create_naomi_space.sh
 
-# echo "Colibri"
+echo "Colibri"
 python src/space_builder/Colibri_space_creation.py -n SAVI-Space-2020-no_kill --no_kills --n_cores 36 --reaction_path smirks_Colibri.json --deprotection_path /work/korn/SAVISpace/data/space_creation_data/protectionpattern.smarts --overwrite
 bash SAVI-Space-2020-no_kill/create_Colibri_space.sh
 
@@ -66,28 +66,28 @@ bash SAVI-Space-2020-no_kill/create_Colibri_space.sh
 echo "SAVI-Space-2020" ##
 #########################
 
-# echo "reactants validation"
-# ###########################
-# python src/space_builder/reactants_validation.py -n SAVI-Space-2020 --reaction_path smirks_Colibri.json -b /work/korn/SAVISpace/data/building_blocks/Dec2019_instock_BBs_155k-sdf_max_molecular_weight_700.0_fragments_standardized.smi --apply_kill --n_cores 36 --unique_matches --cluster --overwrite
+echo "reactants validation"
+###########################
+python src/space_builder/reactants_validation.py -n SAVI-Space-2020 --reaction_path smirks_Colibri.json -b /work/korn/SAVISpace/data/building_blocks/Dec2019_instock_BBs_155k-sdf_max_molecular_weight_700.0_fragments_standardized.smi --apply_kill --n_cores 36 --unique_matches --cluster --overwrite
 
 echo "space creation"
 #####################
 
 echo "NAOMI"
-# python src/space_builder/naomi_space_creation.py -n SAVI-Space-2020 --n_cores 36 --reaction_path smirks_Naomi.json --deprotection_path /work/korn/SAVISpace/data/space_creation_data/protectionpattern.smarts --overwrite
-# bash SAVI-Space-2020/create_naomi_space.sh
+python src/space_builder/naomi_space_creation.py -n SAVI-Space-2020 --n_cores 36 --reaction_path smirks_Naomi.json --deprotection_path /work/korn/SAVISpace/data/space_creation_data/protectionpattern.smarts --overwrite
+bash SAVI-Space-2020/create_naomi_space.sh
 
 echo "Colibri"
-# python src/space_builder/Colibri_space_creation.py -n SAVI-Space-2020 --n_cores 36 --reaction_path smirks_Colibri.json --deprotection_path /work/korn/SAVISpace/data/space_creation_data/protectionpattern.smarts --overwrite
-# bash SAVI-Space-2020/create_Colibri_space.sh
+python src/space_builder/Colibri_space_creation.py -n SAVI-Space-2020 --n_cores 36 --reaction_path smirks_Colibri.json --deprotection_path /work/korn/SAVISpace/data/space_creation_data/protectionpattern.smarts --overwrite
+bash SAVI-Space-2020/create_Colibri_space.sh
 
 ##################################
 echo "SAVI-Space-2020-Librules" ##
 ##################################
 
-# echo "reactants validation"
-# ###########################
-# python src/space_builder/reactants_validation.py -n SAVI-Space-2020-Librules --b /work/korn/SAVISpace/data/building_blocks/Dec2019_instock_BBs_155k-sdf_max_molecular_weight_700.0_fragments_standardized.smi --apply_kill --n_cores 36 --uniquify  --disallow_exocyclic_doublebonds --overwrite
+echo "reactants validation"
+###########################
+python src/space_builder/reactants_validation.py -n SAVI-Space-2020-Librules --b /work/korn/SAVISpace/data/building_blocks/Dec2019_instock_BBs_155k-sdf_max_molecular_weight_700.0_fragments_standardized.smi --apply_kill --n_cores 36 --uniquify  --disallow_exocyclic_doublebonds --overwrite
 
 echo "space creation"
 #####################
@@ -100,17 +100,17 @@ bash SAVI-Space-2020-Librules/create_naomi_space.sh
 echo "SAVI-Space-2024" ##
 #########################
 
-# echo "reactants validation"
-# ###########################
-# python src/space_builder/reactants_validation.py -n SAVI-Space-2024 --reaction_path smirks_Colibri.json  -b /work/korn/SAVISpace/data/building_blocks/Enamine_Building_Blocks_Stock_288748cmpd_20240717_max_molecular_weight_700.0_fragments_standardized.smi --apply_kill --n_cores 36 --unique_matches --cluster  --overwrite
+echo "reactants validation"
+###########################
+python src/space_builder/reactants_validation.py -n SAVI-Space-2024 --reaction_path smirks_Colibri.json  -b /work/korn/SAVISpace/data/building_blocks/Enamine_Building_Blocks_Stock_288748cmpd_20240717_max_molecular_weight_700.0_fragments_standardized.smi --apply_kill --n_cores 36 --unique_matches --cluster  --overwrite
 
 echo "space creation"
 #####################
 
 echo "NAOMI"
-# python src/space_builder/naomi_space_creation.py -n SAVI-Space-2024 --n_cores 36 --reaction_path smirks_Naomi.json --deprotection_path /work/korn/SAVISpace/data/space_creation_data/protectionpattern.smarts --overwrite
-# bash SAVI-Space-2024/create_naomi_space.sh
+python src/space_builder/naomi_space_creation.py -n SAVI-Space-2024 --n_cores 36 --reaction_path smirks_Naomi.json --deprotection_path /work/korn/SAVISpace/data/space_creation_data/protectionpattern.smarts --overwrite
+bash SAVI-Space-2024/create_naomi_space.sh
 
 echo "Colibri"
-# python src/space_builder/Colibri_space_creation.py -n SAVI-Space-2024 --n_cores 36 --reaction_path smirks_Colibri.json --deprotection_path /work/korn/SAVISpace/data/space_creation_data/protectionpattern.smarts --overwrite
-# bash SAVI-Space-2024/create_Colibri_space.sh
+python src/space_builder/Colibri_space_creation.py -n SAVI-Space-2024 --n_cores 36 --reaction_path smirks_Colibri.json --deprotection_path /work/korn/SAVISpace/data/space_creation_data/protectionpattern.smarts --overwrite
+bash SAVI-Space-2024/create_Colibri_space.sh
