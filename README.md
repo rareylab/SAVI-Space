@@ -1,5 +1,7 @@
 # SAVI-Space
 
+![Title Image](images/SAVISpace.png)
+
 Welcome to the **SAVI-Space** repository, which contains the Python-based code and tools for the preparation of building blocks used in the SAVI-Space project. This repository focuses on preprocessing, validation, and preparation of molecular fragment space generation.
 
 ## CHMTRN/PATRAN parser
