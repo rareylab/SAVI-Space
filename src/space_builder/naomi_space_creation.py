@@ -8,6 +8,7 @@
 from pathlib import Path
 import pandas as pd
 import json
+import datetime
 
 from utils import load_reactions, load_pattern_json, single_matching, get_valid, get_filtered_bbs_path
 
@@ -107,6 +108,7 @@ def create_bbs(path, reaction_index, reaction_path=None, apply_kills=True):
         reactions, unique_matches  = load_reactions(reaction_path)
     else:
         reactions, unique_matches  = load_reactions()
+    print(reactions)
     for reaction in range(len(reactions[reaction_index])):
         get_bbs_for_reactant(path, reaction_index, reaction, reactions[reaction_index][reaction], apply_kills=apply_kills)
 
@@ -165,7 +167,10 @@ if __name__ == "__main__":
             f"Path: {path}\n"+
             ("Using cactus aromaticity\n" if args.use_cactus_aromaticity else ""))
 
-    patterns_json = load_pattern_json()
+    if args.reaction_path:
+        patterns_json = load_pattern_json(args.reaction_path)
+    else:
+        patterns_json = load_pattern_json()
 
     reaction_indices = list(patterns_json.keys())
     if args.indices:

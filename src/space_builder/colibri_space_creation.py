@@ -10,7 +10,7 @@ import pandas as pd
 import json
 import datetime
 
-from utils import load_reactions, load_pattern_json, get_valid, single_matching, get_filtered_bbs_path
+from utils import load_reactions, load_pattern_json, single_matching, get_valid, get_filtered_bbs_path
 
 
 def get_bbs_for_reactant(path, name, reaction_idx, reaction, reactions, apply_kills=True, overwrite=False):
@@ -159,7 +159,10 @@ if __name__ == "__main__":
             f"Path: {path}\n"+
             ("Using cactus aromaticity\n" if args.use_cactus_aromaticity else ""))
 
-    patterns_json = load_pattern_json()
+    if args.reaction_path:
+        patterns_json = load_pattern_json(args.reaction_path)
+    else:
+        patterns_json = load_pattern_json()
 
     reaction_indices = list(patterns_json.keys())
     if args.indices:

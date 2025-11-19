@@ -71,7 +71,13 @@ def get_pattern_smarts(reactions, reaction_index, unique_matches=None):
     return pattern_smarts
 
 def load_reactions(filename='smirks.json'):
-    with open(f"data/{filename}") as json_file:
+    if Path(f"data/{filename}").is_file():
+        filepath = f"data/{filename}"
+    elif Path(filename).is_file():
+        filepath = filename
+    else:
+        raise FileNotFoundError(f"{filename} could not be found.")
+    with open(filepath) as json_file:
         reaction_pattern = json.load(json_file)
     reactions = {}
     unique_matches = {}
@@ -94,7 +100,14 @@ def get_reaction_name(reaction_idx, filename='smirks.json'):
     return patterns_json[str(reaction_idx)]["name"]
 
 def load_pattern_json(filename='smirks.json'):
-    with open(f"data/{filename}") as json_file:
+    if Path(f"data/{filename}").is_file():
+        filepath = f"data/{filename}"
+    elif Path(filename).is_file():
+        filepath = filename
+    else:
+        raise FileNotFoundError(f"{filename} could not be found.")
+    print(filepath)
+    with open(filepath) as json_file:
         patterns_json = json.load(json_file)
     # delete comment from json
     patterns_json = {key: patterns_json[key] for key in patterns_json if not key.startswith("_")}
@@ -102,7 +115,13 @@ def load_pattern_json(filename='smirks.json'):
 
 
 def load_kill_patterns(filename="KILL.json"):
-    with open(f"data/{filename}") as json_file:
+    if Path(f"data/{filename}").is_file():
+        filepath = f"data/{filename}"
+    elif Path(filename).is_file():
+        filepath = filename
+    else:
+        raise FileNotFoundError(f"{filename} could not be found.")
+    with open(filepath) as json_file:
         kill_pattern = json.load(json_file)
     # delete comment from json
     kill_pattern = {key: kill_pattern[key] for key in kill_pattern if not key.startswith("_")}
@@ -158,16 +177,17 @@ def get_rxn_smarts(reactant_smarts):
 def killing(educts, reactant_idx, sub_reaction_name, kill_name):
     return ~educts[f"{sub_reaction_name}_r{reactant_idx}_{kill_name}"].isna()
 
-def single_matching(educts, reactant_idx, sub_reaction_name, kill_name=""):
-    if kill_name:
+def single_matching(educts, reactant_idx, sub_reaction_name, kill_name="no_kill"):
+    if kill_name != "no_kill":
         return (educts[f"{sub_reaction_name}_r{reactant_idx}"] == 1) &\
                 ((educts[f"{sub_reaction_name}_r{(reactant_idx%2)+1}"] == 0) |\
                 ~(educts[f"{sub_reaction_name}_r{(reactant_idx%2)+1}_{kill_name}"].isna()))
     else:
         return (educts[f"{sub_reaction_name}_r{reactant_idx}"] == 1) & (educts[f"{sub_reaction_name}_r{(reactant_idx%2)+1}"] == 0)
 
-def get_valid(enamine_educts, reactant_idx, sub_reaction_name, kill_name):
-    killed = killing(enamine_educts, reactant_idx, sub_reaction_name, kill_name)
+def get_valid(enamine_educts, reactant_idx, sub_reaction_name, kill_name="no_kill"):
     single_match = single_matching(enamine_educts, reactant_idx, sub_reaction_name, kill_name)
-    smiles = enamine_educts[~killed & single_match]
-    return smiles
+    if kill_name != "no_kill":
+        killed = killing(enamine_educts, reactant_idx, sub_reaction_name, kill_name)
+        return(enamine_educts[~killed & single_match])
+    return enamine_educts[single_match]

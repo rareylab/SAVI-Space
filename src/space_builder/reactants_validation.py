@@ -15,7 +15,6 @@ import datetime
 
 from rdkit import Chem
 
-from pandarallel import pandarallel
 from utils import load_reactions, load_kill_patterns, load_pattern_json, get_filtered_bbs_path, get_pattern_smarts, mask_exocyclic_doublebonds, smarts_exocyclic_doublebonds
 
 def rdkit_check(smiles, smarts, disallow_exocyclic_doublebonds=False, uniquify=False):
@@ -66,7 +65,7 @@ def rdkit_pattern_matching(bbs_path, outpath, reaction_index, reactions, reactio
     pattern_smarts = get_pattern_smarts(reactions, reaction_index, unique_matches)
     df = pd.read_csv(bbs_path, sep=" ", header=None, names=["smiles", "name"])
     for name, patt in pattern_smarts.items():
-        df[name] = df["smiles"].parallel_apply(lambda x: rdkit_check(x, patt, disallow_exocyclic_doublebonds=disallow_exocyclic_doublebonds, uniquify=uniquify))
+        df[name] = df["smiles"].apply(lambda x: rdkit_check(x, patt, disallow_exocyclic_doublebonds=disallow_exocyclic_doublebonds, uniquify=uniquify))
     df.to_csv(reaction_outpath / f"results.csv")
 
 
@@ -118,11 +117,11 @@ def kill_statements(reaction_index, outpath, kill_patterns, reactions, reaction_
         name_dict[f"{reaction_idx}_{pattern_idx}"][f"{sub_pattern_idx}"] = []
         temp_name = "_".join([reaction_idx, pattern_idx, sub_pattern_idx])
         if (df[temp_name + "_r1"]==1).sum() > 0:
-            kill_output1 = df[df[temp_name + "_r1"]>0]["smiles"].parallel_apply(lambda x: kill(x, pattern_smarts[temp_name + "_r1"], kill_pattern, disallow_exocyclic_doublebonds=disallow_exocyclic_doublebonds))
+            kill_output1 = df[df[temp_name + "_r1"]>0]["smiles"].apply(lambda x: kill(x, pattern_smarts[temp_name + "_r1"], kill_pattern, disallow_exocyclic_doublebonds=disallow_exocyclic_doublebonds))
         else:
             kill_output1 = pd.Series()
         if (df[temp_name + "_r2"]==1).sum() > 0:
-            kill_output2 = df[df[temp_name + "_r2"]>0]["smiles"].parallel_apply(lambda x: kill(x, pattern_smarts[temp_name + "_r2"], kill_pattern, disallow_exocyclic_doublebonds=disallow_exocyclic_doublebonds))
+            kill_output2 = df[df[temp_name + "_r2"]>0]["smiles"].apply(lambda x: kill(x, pattern_smarts[temp_name + "_r2"], kill_pattern, disallow_exocyclic_doublebonds=disallow_exocyclic_doublebonds))
         else:
             kill_output2 = pd.Series()
         compatibility_dict = {}
@@ -254,14 +253,9 @@ if __name__=="__main__":
     parser.add_argument("--disallow_exocyclic_doublebonds", action="store_true", help="disallow exocyclic doublebonds for aromatic systems")
     parser.add_argument("--uniquify", action="store_true", help="uniquify rdkit matches")
     parser.add_argument("--unique_matches", action="store_true", help="use unique matches")
-    parser.add_argument("--n_cores", type=int, default=4, help="number of cores to use. Default: 4")
     parser.add_argument("--overwrite", action="store_true", help="overwrite output directory")
     args = parser.parse_args()
 
-    if args.cluster:
-        pandarallel.initialize(nb_workers=args.n_cores)
-    else:
-        pandarallel.initialize(nb_workers=args.n_cores, progress_bar=True)
 
     if args.apply_kill:
         from kill_statements import kill, create_pairs

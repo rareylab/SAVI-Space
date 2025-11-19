@@ -7,7 +7,6 @@
 
 import argparse
 import pandas as pd
-from pandarallel import pandarallel
 import numpy as np
 from tqdm import tqdm
 from pathlib import Path
@@ -102,11 +101,9 @@ if __name__ == "__main__":
     parser.add_argument("--min_molecular_weight", type=float, default=None, help="Minimal molecular weight")
     parser.add_argument("--max_bertz_ct", type=float, default=None, help="Maximal bertz ct")
     parser.add_argument("-v", "--verbose", action="store_true", help="Verbose output")
-    parser.add_argument("--n_jobs", type=int, default=1, help="Number of jobs to run")
     args = parser.parse_args()
 
 
-    pandarallel.initialize(progress_bar=True, nb_workers=args.n_jobs)
 
     process_log = []
 
@@ -129,7 +126,9 @@ if __name__ == "__main__":
                     if mol is not None:
                         sdf_valid_entrys += 1
                         f.write(f"{Chem.MolToSmiles(mol)} {mol.GetProp('ID')}\n")
-        print(f"Converted {sdf_valid_entrys}/{sdf_entrys} valid sdf entrys to smi")
+            print(f"Converted {sdf_valid_entrys}/{sdf_entrys} valid sdf entrys to smi")
+        else:
+            print(f"SD file already converted. Remove `{name}.smi` if you want to convert again.")
         process_log.append(["sdf_entrys", sdf_entrys])
         process_log.append(["sdf_valid_entrys", sdf_valid_entrys])
     elif file_type == "smi":
@@ -173,29 +172,30 @@ if __name__ == "__main__":
         df = pd.read_csv(df_name)
 
     # load mols
-    df["molecule"] = df["smiles"].parallel_apply(lambda x: Chem.MolFromSmiles(x) if x is not None else np.nan)
+    df["molecule"] = df["smiles"].apply(lambda x: Chem.MolFromSmiles(x) if x is not None else np.nan)
 
     if (args.min_heavy_atoms is not None or args.max_heavy_atoms is not None) and "heavy_atoms" not in df.columns:
-        df["heavy_atoms"] = df["molecule"].parallel_apply(lambda x: x.GetNumHeavyAtoms() if x is not None else np.nan)
+        df["heavy_atoms"] = df["molecule"].apply(lambda x: x.GetNumHeavyAtoms() if x is not None else np.nan)
 
     if (args.min_molecular_weight is not None or args.max_molecular_weight is not None) and "MW" not in df.columns:
-        df["MW"] = df["molecule"].parallel_apply(lambda x: ExactMolWt(x) if x is not None else np.nan)
+        df["MW"] = df["molecule"].apply(lambda x: ExactMolWt(x) if x is not None else np.nan)
     #save
     df.drop(columns=["molecule"]).to_csv(df_name, index=False)
 
     # remove molecules with more than max_heavy_atoms or less than min_heavy_atoms
     if args.min_heavy_atoms is not None:
         name = f"{name}_min_heavy_atoms_{args.min_heavy_atoms}"
-        df = df[df["MW"] >= args.min_heavy_atoms]
+        df = df[df["heavy_atoms"] >= args.min_heavy_atoms]
         print(f"{df.shape[0]} molecules with more than {args.min_heavy_atoms} heavy atoms")
         process_log.append(["min_heavy_atoms", df.shape[0]])
 
     if args.max_heavy_atoms is not None:
         name = f"{name}_max_heavy_atoms_{args.max_heavy_atoms}"
-        df = df[df["MW"] <= args.max_heavy_atoms]
+        df = df[df["heavy_atoms"] <= args.max_heavy_atoms]
         print(f"{df.shape[0]} molecules with less than {args.max_heavy_atoms} heavy atoms")
         process_log.append(["max_heavy_atoms", df.shape[0]])
 
+    # remove molecules with more than max_molecular_weight or less than min_molecular_weight
     if args.max_molecular_weight is not None:
         name = f"{name}_max_molecular_weight_{args.max_molecular_weight}"
         df = df[df["MW"] <= args.max_molecular_weight]
@@ -210,15 +210,15 @@ if __name__ == "__main__":
 
     if args.max_bertz_ct is not None:
         name = f"{name}_max_bertz_ct_{args.max_bertz_ct}"
-        df = df[df["molecule"].parallel_apply(lambda x: BertzCT(x) if x is not None else np.nan) <= args.max_bertz_ct]
+        df = df[df["molecule"].apply(lambda x: BertzCT(x) if x is not None else np.nan) <= args.max_bertz_ct]
         print(f"{df.shape[0]} molecules with less than {args.max_bertz_ct} bertz ct")
         process_log.append(["max_bertz_ct", df.shape[0]])
 
-    df["molecule"] = df["molecule"].parallel_apply(standardize)
+    df["molecule"] = df["molecule"].apply(standardize)
     df = df.dropna(subset=["molecule"])
     print(f"{df.shape[0]} valid molecules after standardization")
     process_log.append(["standardization", df.shape[0]])
-    df["smiles"] = df["molecule"].parallel_apply(lambda x: Chem.MolToSmiles(x) if x is not None else np.nan)
+    df["smiles"] = df["molecule"].apply(lambda x: Chem.MolToSmiles(x) if x is not None else np.nan)
 
     # combine duplicates by smiles and concatenate names
     size_before = df.shape[0]

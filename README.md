@@ -140,11 +140,11 @@ This tool validates building blocks against predefined SMARTS patterns and kill 
 
 Run the validation script:
    ```bash
-   python src/space_builder/reactants_validation.py -n SAVI-Space-2024 -r building_blocks.smi --apply_kill
+   python src/space_builder/reactants_validation.py -n SAVI-Space-2024 -b building_blocks.smi --apply_kill
    ```
 The output will be saved at `SAVI-Space-2024/`. You can specify a path using the `-o` argument.
    ```bash
-   python src/space_builder/reactants_validation.py -n SAVI-Space-2024 -r building_blocks.smi --apply_kill -o path/to/output
+   python src/space_builder/reactants_validation.py -n SAVI-Space-2024 -b building_blocks.smi --apply_kill -o path/to/output
    ```
    Will be saved at `path/to/output/SAVI-Space-2024/`.
 
@@ -160,12 +160,12 @@ This module prepares building blocks and reactions for space generation using th
 
 - For Colibri:
    ```bash
-   python src/space_builder/Colibri_space_creation.py -n SAVI-Space-2024
+   python src/space_builder/colibri_space_creation.py -n SAVI-Space-2024
    ```
 
 - For Naomi:
    ```bash
-   python src/space_builder/Naomi_space_creation.py -n SAVI-Space-2024
+   python src/space_builder/naomi_space_creation.py -n SAVI-Space-2024
    ```
 A bash script will be generated to run the toolkit.
 In the script, the paths to the executables should be specified.

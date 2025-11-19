@@ -1,6 +1,5 @@
 rdkit
 pandas
-pandarallel
 numpy
 pathlib
 json
