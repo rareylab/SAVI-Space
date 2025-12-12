@@ -8,14 +8,13 @@
 from tqdm import tqdm
 import pandas as pd
 from pathlib import Path
-import argparse
 import logging
 import json
 import datetime
 
 from rdkit import Chem
 
-from utils import load_reactions, load_kill_patterns, load_pattern_json, get_filtered_bbs_path, get_pattern_smarts, mask_exocyclic_doublebonds, smarts_exocyclic_doublebonds
+from utils import load_reactions, load_kill_patterns, load_pattern_json, get_filtered_bbs_path, get_pattern_smarts, mask_exocyclic_doublebonds, smarts_exocyclic_doublebonds, initialize_logger
 
 def rdkit_check(smiles, smarts, disallow_exocyclic_doublebonds=False, uniquify=False):
     mol = Chem.MolFromSmiles(smiles)
@@ -31,11 +30,13 @@ def rdkit_check(smiles, smarts, disallow_exocyclic_doublebonds=False, uniquify=F
     if disallow_exocyclic_doublebonds:
         mol = mask_exocyclic_doublebonds.normalize(mol)
         if not mol:
+            logging.error("Failed to normalize molecule")
             raise ValueError("Failed to normalize molecule")
         smarts = smarts_exocyclic_doublebonds(smarts)
 
     patt = Chem.MolFromSmarts(smarts)
     if not patt:
+        logging.error(f"Invalid SMARTS pattern: {smarts}")
         raise ValueError(f"Invalid SMARTS pattern: {smarts}")
 
     patt_atom_mapping = [atom.GetAtomMapNum() for atom in patt.GetAtoms()]
@@ -52,6 +53,7 @@ def rdkit_check(smiles, smarts, disallow_exocyclic_doublebonds=False, uniquify=F
             else:
                 match_candidate = [m for (m, a) in zip(match, patt_atom_mapping) if a != 0]
             if not match_candidate:
+                logging.error("No atom mapping found in match")
                 raise ValueError("No atom mapping found in match")
             if match_candidate not in valid_matches:
                 valid_matches.append(match_candidate)
@@ -110,7 +112,7 @@ def kill_statements(reaction_index, outpath, kill_patterns, reactions, reaction_
     for idx1, pattern_name in supbar:
         if pattern_name.endswith("_r2"):
             continue
-        print(f"Applying kill function for {pattern_name[:-3].replace('_', ' ')}")
+        logging.info(f"Applying kill function for {pattern_name[:-3].replace('_', ' ')}")
         reaction_idx, pattern_idx, sub_pattern_idx, reactant = pattern_name.split("_")
         if f"{reaction_idx}_{pattern_idx}" not in name_dict:
             name_dict[f"{reaction_idx}_{pattern_idx}"] = {}
@@ -153,8 +155,8 @@ def kill_statements(reaction_index, outpath, kill_patterns, reactions, reaction_
                 temp_kill_output2.name = temp_name + f"_r2_kill_{idx2:0{len(str(len(pairs)))}}"
                 name_dict[f"{reaction_idx}_{pattern_idx}"][f"{sub_pattern_idx}"].append(f"kill_{idx2:0{len(str(len(pairs)))}}")
                 kill_outputs = pd.concat([kill_outputs, pd.concat([temp_kill_output1, temp_kill_output2], axis=1)], axis=1)
-                print(f"added {f"kill_{idx2:0{len(str(len(pairs)))}}"}")
-            print(f"added {len(pairs)} kill statement(s)")
+                logging.info(f"added {f"kill_{idx2:0{len(str(len(pairs)))}}"}")
+            logging.info(f"added {len(pairs)} kill statement(s)")
         else:
             kill_output1 = kill_output1.apply(lambda x: list(x.keys())[0] if x[list(x.keys())[0]] else None)
             kill_output2 = kill_output2.apply(lambda x: list(x.keys())[0] if x[list(x.keys())[0]] else None)
@@ -162,7 +164,7 @@ def kill_statements(reaction_index, outpath, kill_patterns, reactions, reaction_
             kill_output2.name = temp_name + "_r2_kill_0"
             name_dict[f"{reaction_idx}_{pattern_idx}"][f"{sub_pattern_idx}"].append("kill_0")
             kill_outputs = pd.concat([kill_output1, kill_output2], axis=1)
-            print("added kill_0")
+            logging.info("added kill_0")
         kill_df = pd.concat([kill_df, kill_outputs], axis=1)
     df = pd.concat([df, kill_df] , axis=1)
     # order columns alphabetically but without the first two  columns ["smiles", "name"]
@@ -197,7 +199,6 @@ def validate_reactants(bbs_path, outpath, indices=None, apply_kill=False, reacti
         unique_matches = None
 
     for reaction_index in indices:
-        print(f"Start reactants validation for {reaction_pattern[reaction_index]['name']}")
         logging.info(f"Start reactants validation for {reaction_pattern[reaction_index]['name']}")
         rdkit_pattern_matching(bbs_path, outpath, reaction_index, reactions, reaction_pattern, disallow_exocyclic_doublebonds, unique_matches=unique_matches, uniquify=uniquify)
         if apply_kill:
@@ -216,8 +217,6 @@ def validate_reactants(bbs_path, outpath, indices=None, apply_kill=False, reacti
             get_stats(reaction_outpath, apply_kill=False)
     total_time = (datetime.datetime.now() - start)
     logging.info(f"Total time: {total_time}")
-    print(f"Total time: {total_time}")
-
 
 
 def get_stats(reaction_outpath, apply_kill=False):
@@ -225,7 +224,6 @@ def get_stats(reaction_outpath, apply_kill=False):
     columns = list(set(df.columns) - set(["smiles", "name"]))
     info_add = " and number of killed matches" if apply_kill else ""
     logging.info("number of 1 or more matches" + info_add + ":")
-    print("number of of 1 or more matches" + info_add + ":")
     stats_df = ((df[[c for c in columns if "kill" not in c]] >= 1.0)).sum(axis=0)
     if apply_kill:
         kill_stats = ((~df[[c for c in columns if "kill" in c]].isna())).sum(axis=0)
@@ -234,13 +232,11 @@ def get_stats(reaction_outpath, apply_kill=False):
     stats_df.to_csv(reaction_outpath / f"stats.csv", header=False)
     lines = str(stats_df).split("\n")[:-1]
     for line in lines:
-        print(line)
         logging.info(line)
-    print("#"*50)
     logging.info("#"*50)
 
-
-if __name__=="__main__":
+def main():
+    import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("-b","--bbs_path", type=str, help="path to the reactants file")
     parser.add_argument("-n","--name", type=str, default="SAVI-Space", help="name of the space and so the folder created in the output. Default: SAVI-Space")
@@ -256,6 +252,7 @@ if __name__=="__main__":
     parser.add_argument("--overwrite", action="store_true", help="overwrite output directory")
     args = parser.parse_args()
 
+    initialize_logger(outpath / "reactants_validation.log")
 
     if args.apply_kill:
         from kill_statements import kill, create_pairs
@@ -268,13 +265,13 @@ if __name__=="__main__":
     else:
         outpath = Path(args.outpath) / args.name
     if outpath.exists() and not args.overwrite and not args.indices:
+        logging.error(f"{outpath} already exists. Use --overwrite to overwrite the directory.")
         raise FileExistsError(f"{outpath} already exists. Use --overwrite to overwrite the directory.")
     elif outpath.exists() and args.overwrite:
         import shutil
         shutil.rmtree(outpath)
 
     outpath.mkdir(parents=True, exist_ok=True)
-    logging.basicConfig(format='%(asctime)s - %(message)s', filename=outpath / "log_reactants_validation.txt", level=logging.INFO)
 
     logging.info(f"Start reactants validation for {args.name}")
 
@@ -287,3 +284,6 @@ if __name__=="__main__":
                                disallow_exocyclic_doublebonds=args.disallow_exocyclic_doublebonds,
                                 uniquify=args.uniquify,
                                 use_unique_matches=args.unique_matches)
+    
+if __name__=="__main__":
+    main()

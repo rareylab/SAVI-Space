@@ -8,9 +8,51 @@
 import json
 from pathlib import Path
 import re
+import logging
+import sys
 
 from rdkit import Chem
 from rdkit.Chem.MolStandardize import rdMolStandardize
+
+def initialize_logger(log_file, console_level=logging.INFO):
+    """
+    Initializes and configures the **Root Logger** of the application.
+
+    Args:
+        console_level (int): The logging level for the console output 
+                             (e.g., logging.INFO, logging.WARNING).
+        log_file (str): The name of the file to write logs to.
+    """
+    # *** WICHTIGE ÄNDERUNG: Aufruf ohne Argumente gibt den Root Logger zurück ***
+    logger = logging.getLogger() 
+    
+    # Der Root Logger wird standardmäßig auf WARNING gesetzt. 
+    # Um DEBUG-Meldungen zu verarbeiten, muss das Level hochgesetzt werden.
+    logger.setLevel(logging.DEBUG) 
+
+    # Prevent handlers from being added multiple times if called more than once
+    if logger.hasHandlers():
+        return logger
+
+    formatter = logging.Formatter(
+        '%(asctime)s - %(levelname)s - %(message)s',
+        datefmt='%Y-%m-%d %H:%M:%S'
+    )
+
+    # File Handler
+    file_handler = logging.FileHandler(log_file)
+    file_handler.setLevel(logging.DEBUG)
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
+
+    # Console Handler
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setLevel(console_level)
+    console_handler.setFormatter(formatter)
+    logger.addHandler(console_handler)
+    
+    return logger
+
 
 # remove tree with option to keep files, when delete_files=False only empty folders are removed
 def remove_tree(path, delete_files=True):
@@ -71,11 +113,15 @@ def get_pattern_smarts(reactions, reaction_index, unique_matches=None):
     return pattern_smarts
 
 def load_reactions(filename='smirks.json'):
-    if Path(f"data/{filename}").is_file():
-        filepath = f"data/{filename}"
+    script_dir = Path(__file__).resolve().parent
+    project_root = script_dir.parent.parent
+    filepath_project = project_root / 'data' / filename
+    filepath = None
+    if filepath_project.is_file():
+        filepath = filepath_project
     elif Path(filename).is_file():
-        filepath = filename
-    else:
+        filepath = Path(filename)
+    if filepath is None:
         raise FileNotFoundError(f"{filename} could not be found.")
     with open(filepath) as json_file:
         reaction_pattern = json.load(json_file)
@@ -100,13 +146,16 @@ def get_reaction_name(reaction_idx, filename='smirks.json'):
     return patterns_json[str(reaction_idx)]["name"]
 
 def load_pattern_json(filename='smirks.json'):
-    if Path(f"data/{filename}").is_file():
-        filepath = f"data/{filename}"
+    script_dir = Path(__file__).resolve().parent
+    project_root = script_dir.parent.parent
+    filepath_project = project_root / 'data' / filename
+    filepath = None
+    if filepath_project.is_file():
+        filepath = filepath_project
     elif Path(filename).is_file():
-        filepath = filename
-    else:
+        filepath = Path(filename)
+    if filepath is None:
         raise FileNotFoundError(f"{filename} could not be found.")
-    print(filepath)
     with open(filepath) as json_file:
         patterns_json = json.load(json_file)
     # delete comment from json
@@ -115,11 +164,15 @@ def load_pattern_json(filename='smirks.json'):
 
 
 def load_kill_patterns(filename="KILL.json"):
-    if Path(f"data/{filename}").is_file():
-        filepath = f"data/{filename}"
+    script_dir = Path(__file__).resolve().parent
+    project_root = script_dir.parent.parent
+    filepath_project = project_root / 'data' / filename
+    filepath = None
+    if filepath_project.is_file():
+        filepath = filepath_project
     elif Path(filename).is_file():
-        filepath = filename
-    else:
+        filepath = Path(filename)
+    if filepath is None:
         raise FileNotFoundError(f"{filename} could not be found.")
     with open(filepath) as json_file:
         kill_pattern = json.load(json_file)
